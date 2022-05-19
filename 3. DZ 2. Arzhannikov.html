@@ -19,17 +19,19 @@
 
       let S; // S - площадь круга
       let R; // R - радиус круга
+      let storonaKvadrata; // сторона квадрата
       const Pi = 3.1415926535;
 
       // РЕШЕНИЕ
 
       R = L / (2 * Pi); // Вычисляем радиус круга
       S = Pi * R ** 2; // Вычисляем площадь круга
-
+      storonaKvadrata = Math.sqrt(S); // вычисляем сторону квадрата
       // ВЫВОД РЕЗУЛЬТАТА
 
       console.log("Радиус круга = " + R);
       console.log("Площадь круга = " + S);
+      console.log("Сторона квадрата = " + storonaKvadrata);
     </script>
   </head>
   <body>
