@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <script>
+      let data;
+      data = new Date(2022, 04, 12); // 12 мая 2022
+      dayOfTheWeek = data.getDay();
+
+      console.log(
+        "Заданная дата: 12 мая 2022. Число, соответствующее дню неделю с 0 (ВСКР) до 6 (СБ) = " +
+          dayOfTheWeek
+      );
+
+      if (data.getDay() == 0) { // присваиваем цифровому обозначению название дня недели
+        dayOfTheWeek = "Sunday";
+      }
+      if (data.getDay() == 1) {
+        dayOfTheWeek = "Monday";
+      }
+      if (data.getDay() == 2) {
+        dayOfTheWeek = "Tuesday";
+      }
+      if (data.getDay() == 3) {
+        dayOfTheWeek = "Wednesday";
+      }
+      if (data.getDay() == 4) {
+        dayOfTheWeek = "Thursday";
+      }
+      if (data.getDay() == 5) {
+        dayOfTheWeek = "Friday";
+      }
+      if (data.getDay() == 6) {
+        dayOfTheWeek = "Saturday";
+      }
+
+      console.log(dayOfTheWeek);
+    </script>
+  </head>
+  <body>
+    <h1>
+      По заданной дате вывести на экран число, соответствующее дню недели. Дату
+      задать непосредственно в скрипте. Вывод выполнить в консоль.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>12 мая 2022 года</p>
+  </body>
+</html>
