@@ -9,6 +9,7 @@
       let y2 = Number(prompt("Введи значение точки B для координаты y2"));
       let x3 = Number(prompt("Введи значение точки C для координаты x3"));
       let y3 = Number(prompt("Введи значение точки C для координаты y3"));
+      let max;
 
       let Skrug; // Площадь круга с радиусом 0A
       let Skvadrat; // Площадь квадрата со стороной 0B
@@ -22,16 +23,26 @@
         Math.sqrt((x3 - x1) ** 2 + (y3 - y1) ** 2) *
         Math.sqrt((x3 - x2) ** 2 + (y3 - y2) ** 2);
 
+      max = Math.max(Skrug, Skvadrat, Spryamougolnik);
+
+      if (max == Skrug) {
+        max = "площадь круга";
+      }
+
+      if (max == Skvadrat) {
+        max = "площадь квадата";
+      }
+
+      if (max == Spryamougolnik) {
+        max = "площадь прямоугольника";
+      }
       // ВЫВОД РЕЗУЛЬТАТА
 
       console.log("Skrug Площадь круга с радиусом 0A = " + Skrug);
       console.log("Skvadrat Площадь квадрата со стороной 0B = " + Skvadrat);
       console.log("Spryamougolnik = " + Spryamougolnik);
 
-      console.log(
-        "Math.max(Skrug, Skvadrat, Spryamougolnik) = " +
-          Math.max(Skrug, Skvadrat, Spryamougolnik)
-      );
+      console.log("Самое большое значение - " + max);
     </script>
   </head>
   <body>

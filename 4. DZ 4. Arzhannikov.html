@@ -5,50 +5,57 @@
 
       let month = Number(prompt("Введи номер месяца от 1 до 12"));
 
-      switch (month) {
-        case 1:
-          month = "January";
-          break;
-        case 2:
-          month = "february";
-          break;
-        case 3:
-          month = "March";
-          break;
-        case 4:
-          month = "april";
-          break;
-        case 5:
-          month = "May";
-          break;
-        case 6:
-          month = "June";
-          break;
-        case 7:
-          month = "July";
-          break;
-        case 8:
-          month = "august";
-          break;
-        case 9:
-          month = "september";
-          break;
-        case 10:
-          month = "October";
-          break;
-        case 11:
-          month = "November";
-          break;
-        case 12:
-          month = "december";
-          break;
-      }
+      if (isNaN(month) == false) {
+        if (month < 1 || month > 12) {
+          do
+            month = Number(
+              prompt(
+                "Введен некорректный номер месяца. Введи номер месяца от 1 до 12"
+              )
+            );
+          while (month < 1 || month > 12 || isNaN(month) == true);
+        }
 
-      // РЕШЕНИЕ
-
-      // ВЫВОД РЕЗУЛЬТАТА
-
-      console.log("Название месяца - " + month);
+        switch (month) {
+          case 1:
+            month = "January";
+            break;
+          case 2:
+            month = "february";
+            break;
+          case 3:
+            month = "March";
+            break;
+          case 4:
+            month = "april";
+            break;
+          case 5:
+            month = "May";
+            break;
+          case 6:
+            month = "June";
+            break;
+          case 7:
+            month = "July";
+            break;
+          case 8:
+            month = "august";
+            break;
+          case 9:
+            month = "september";
+            break;
+          case 10:
+            month = "October";
+            break;
+          case 11:
+            month = "November";
+            break;
+          case 12:
+            month = "december";
+            break;
+        }
+        console.log("Название месяца - " + month);
+      } else console.log("Введено не число");
     </script>
   </head>
   <body>
@@ -56,9 +63,11 @@
       Написать программу, которая по номеру месяца, выводит его название. После
       ввода исходных данных проверить их на соответствие требованиям, т.е. если
       пользователь ввёл не число, сообщить ему об этом и определение месяца не
-      проводить.
+      проводить. Перед выполнением алгоритма проверьте введённые данные на
+      корректность, используя метод isNaN() или предложите свой вариант
+      проверки.
     </h1>
     <h1>Работа в браузере с JS</h1>
-    <p>25 мая 2022 года</p>
+    <p>26 мая 2022 года</p>
   </body>
 </html>
