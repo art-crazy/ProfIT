@@ -2,14 +2,87 @@
   <head>
     <script>
       // ВВОД ИСХОДНЫХ ДАННЫХ
+      let A = Number(prompt("Введи значение А"));
+      let B = Number(prompt("Введи значение В"));
+      let C = Number(prompt("Введи значение С"));
+
+      let max;
+      let mean;
+      let min;
+
+      let udvoennayaRaznost;
+      let proizvedenie;
 
       // РЕШЕНИЕ
+      A = Math.floor(A); // округляем до целого
+      B = Math.floor(B);
+      C = Math.floor(C);
 
+      // Вычисляем max
+      if (A > B && A > C) {
+        max = A;
+      }
+
+      if (B > A && B > C) {
+        max = B;
+      }
+
+      if (C > A && C > B) {
+        max = C;
+      }
+
+      // вычисляем min
+      if (A < B && A < C) {
+        min = A;
+      }
+
+      if (B < A && B < C) {
+        min = B;
+      }
+
+      if (C < A && C < B) {
+        min = C;
+      }
+
+      // вычисляем mean
+      if (A > B && A < C) {
+        mean = A;
+      } else if (A < B && A > C) {
+        mean = A;
+      } else if (B > A && B < C) {
+        mean = B;
+      } else if (B < A && B > C) {
+        mean = B;
+      } else mean = C;
+
+      udvoennayaRaznost = (max - min) * 2;
+      proizvedenie = min * mean;
+
+      if (udvoennayaRaznost > proizvedenie) {
+        result =
+          "Удвоенная разность наибольшего и наименьшего БОЛЬШЕ, чем произведение меньшего и среднего";
+      } else
+        result =
+          "Произведение меньшего и среднего БОЛЬШЕ, чем удвоенная разность наибольшего и наименьшего";
       // ВЫВОД РЕЗУЛЬТАТА
+
+      console.log("max = " + max);
+      console.log("min = " + min);
+      console.log("mean = " + mean);
+
+      console.log(
+        "Удвоенная разность наибольшего и наименьшего = " + udvoennayaRaznost
+      );
+      console.log("Произведение меньшего и среднего = " + proizvedenie);
+      console.log(result);
     </script>
   </head>
   <body>
-    <h1></h1>
+    <h1>
+      Даны целые числа А, В, С. Выяснить, что больше: удвоенная разность
+      наибольшего и наименьшего из них или произведение меньшего и "среднего"
+      числа.
+    </h1>
     <h1>Работа в браузере с JS</h1>
     <p>25 мая 2022 года</p>
   </body>
