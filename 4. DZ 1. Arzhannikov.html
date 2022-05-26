@@ -23,24 +23,25 @@
         Math.sqrt((x3 - x1) ** 2 + (y3 - y1) ** 2) *
         Math.sqrt((x3 - x2) ** 2 + (y3 - y2) ** 2);
 
-      max = Math.max(Skrug, Skvadrat, Spryamougolnik);
-
-      if (max == Skrug) {
+      if (Skrug > Skvadrat && Skrug > Spryamougolnik) {
         max = "площадь круга";
       }
 
-      if (max == Skvadrat) {
-        max = "площадь квадата";
+      if (Skvadrat > Skrug && Skvadrat > Spryamougolnik) {
+        max = "площадь квадрата";
       }
 
-      if (max == Spryamougolnik) {
+      if (Spryamougolnik > Skvadrat && Spryamougolnik > Skrug) {
         max = "площадь прямоугольника";
       }
+
       // ВЫВОД РЕЗУЛЬТАТА
 
-      console.log("Skrug Площадь круга с радиусом 0A = " + Skrug);
-      console.log("Skvadrat Площадь квадрата со стороной 0B = " + Skvadrat);
-      console.log("Spryamougolnik = " + Spryamougolnik);
+      console.log("Площадь круга с радиусом 0A = " + Skrug);
+      console.log("Площадь квадрата со стороной 0B = " + Skvadrat);
+      console.log(
+        "Площадь прямоугольника со сторонами AC и BC = " + Spryamougolnik
+      );
 
       console.log("Самое большое значение - " + max);
     </script>
