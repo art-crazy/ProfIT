@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+      const interval = 0.2;
+      let result;
+      start = 1;
+      finish = 3;
+
+      //ЦИКЛ
+
+      while (start <= finish) {
+        result = Math.sqrt(start) / (start + 1);
+        console.log(
+          "Значение функции при x(" + Number(start.toFixed(1)) + ") = " + result
+        );
+        start = Number(start.toFixed(1)) + interval;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>
+      На интервале [1; 3] с шагом 0.2 найти значения функции. (1+ sin(0.1) )(1+
+      sin(0.2 ) )(1+ sin(0.3 ) )  x 1 x
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>01 июня 2022 года</p>
+  </body>
+</html>

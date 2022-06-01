@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+      const N = Number(prompt("Введи значение N"));
+      let x = Number(prompt("Введи значение x"));
+      let summ;
+      summ = x;
+      let i = 1;
+      let count = 1;
+      // ЦИКЛ
+      do {
+        summ = summ + (x ** (1 + i) + (1 + i)) / (x + i);
+        i++;
+        count++;
+      } while (summ < N);
+      console.log(
+        "Сумма уровнения = " +
+          summ +
+          ". Это больше, чем N. N = " +
+          N +
+          ". Программа прошла " +
+          count +
+          " циклов"
+      );
+    </script>
+  </head>
+  <body>
+    <h1>
+      Даны числа x и N. Вычислить сумму x + (x^2+2)/(x+1) + (x^3+3)/(x+2) +
+      (x^4+4)/(x+3) + ... , пока ее результат не превысит заданного числа N.
+      Решить задачу через цикл с постусловием.
+      https://docs.google.com/document/d/1TxYuEmb-sYJmBsfCFCLF5KMUhNXrUBUSvGnq2j5Zj8w/edit?usp=sharing
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>01 июня 2022 года</p>
+  </body>
+</html>

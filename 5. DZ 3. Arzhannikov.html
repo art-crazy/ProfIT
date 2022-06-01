@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+      const N = Number(prompt("Введи значение N"));
+      let proizvedenie = 1;
+      i = 0;
+      let count = 1;
+      // ЦИКЛ
+
+      do {
+        proizvedenie = proizvedenie * (1 + Math.sin(0.1 + i));
+        i = i + 0.1;
+      } while (proizvedenie <= N);
+
+      // ВЫВОД
+      console.log("proizvedenie = " + proizvedenie);
+    </script>
+  </head>
+  <body>
+    <h1>
+      Вычислить произведение, пока оно не станет больше наперед заданного числа
+      N . Цикл выбрать самостоятельно.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>01 июня 2022 года</p>
+  </body>
+</html>

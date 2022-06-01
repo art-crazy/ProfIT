@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+      const E = Number(prompt("Введи значение E"));
+      let k = 0;
+      let summ;
+      let i = 1;
+      let count = 0;
+      // ЦИКЛ
+      while (k >= E) {
+        console.log("k в начале цикла = " + count++);
+        summ = (4 * k) / (k ** 2 + 8 * Math.sqrt(k));
+        console.log("summ = " + summ);
+        k = k + i;
+        console.log("count = " + count++);
+        console.log("i = " + i);
+      }
+      console.log("Конец");
+    </script>
+  </head>
+  <body>
+    <h1>
+      Вычислить сумму всех членов последовательности, не меньших заданного
+      значения Е, если общий член ее: 4*k / (k^2+8*корень(k)), где (k=1, 2, …).
+      Решить задачу двумя способами через цикл с предусловием.
+      https://docs.google.com/document/d/1Lsy8T4jNIfGh_ph4eNV2uV4-3xlZl9YNoe71PdLgSqY/edit?usp=sharing
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>01 июня 2022 года</p>
+  </body>
+</html>
