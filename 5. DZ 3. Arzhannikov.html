@@ -9,7 +9,7 @@
       // ЦИКЛ
 
       do {
-        proizvedenie = proizvedenie * (1 + Math.sin(0.1 + i));
+        proizvedenie = proizvedenie * (1 + Math.abs(Math.sin(0.1 + i)));
         i = i + 0.1;
       } while (proizvedenie <= N);
 
