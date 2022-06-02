@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+      let a = Number(prompt("Введите действительное число a"));
+      let urovnenie = 1;
+      let k = 1;
+      let n = 1;
+
+      // ЦИКЛ
+      do {
+        k = k + 1;
+        n = n + 2;
+        urovnenie = urovnenie + k / n;
+        console.log("");
+      } while (urovnenie < a);
+
+      //ВЫВОД
+      console.log("Результат уровнения после пройденных циклов = " + urovnenie);
+      console.log("n = " + n);
+    </script>
+  </head>
+  <body>
+    <h1>Дано действительное число а. Найти такое наименьшее n, что</h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>01 июня 2022 года</p>
+  </body>
+</html>
