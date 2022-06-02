@@ -2,21 +2,23 @@
   <head>
     <script>
       // ВВОД ИСХОДНЫХ ДАННЫХ
-      const E = Number(prompt("Введи значение E"));
-      let k = 0;
-      let summ;
-      let i = 1;
-      let count = 0;
+
+      let E = Number(prompt("Введи значение E"));
+      let k = 1;
+      let summ = 0;
+      let a = (4 * k) / (k ** 2 + 8 * Math.sqrt(k));
+
       // ЦИКЛ
-      while (k >= E) {
-        console.log("k в начале цикла = " + count++);
-        summ = (4 * k) / (k ** 2 + 8 * Math.sqrt(k));
-        console.log("summ = " + summ);
-        k = k + i;
-        console.log("count = " + count++);
-        console.log("i = " + i);
+      while (a > E) {
+        a = (4 * k) / (k ** 2 + 8 * Math.sqrt(k));
+        k++;
+        if (a > E) {
+          summ = summ + a;
+        }
       }
-      console.log("Конец");
+
+      // Вывод
+      console.log("Сумма = " + summ);
     </script>
   </head>
   <body>
