@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+      let lengthMassive = Number(
+        prompt("Введи количество чисел в последовательности")
+      );
+      let arrayNumber = new Array(lengthMassive);
+      let numberMax;
+      let numberMin;
+      let indexMax = 0;
+      let indexMin = 0;
+      let proizvedenie = 1;
+      let kolPromElementov;
+
+      // РЕШЕНИЕ
+
+      for (let i = 0; i < arrayNumber.length; i++) {
+        arrayNumber[i] = Number(prompt("Введите целое число:"));
+      }
+
+      numberMin = arrayNumber[0];
+      numberMax = arrayNumber[0];
+
+      // Вычисляем позицию MIN числа
+      for (let i = 0; i < arrayNumber.length; i++) {
+        console.log("Заданный массив // " + arrayNumber[i]);
+        if (numberMin > arrayNumber[i]) {
+          numberMin = arrayNumber[i];
+          indexMin = i;
+        }
+      }
+
+      console.log("");
+
+      // Вычисляем позицию MAX числа
+      for (let i = 0; i < arrayNumber.length; i++) {
+        if (numberMax < arrayNumber[i]) {
+          numberMax = arrayNumber[i];
+          indexMax = i;
+        }
+      }
+
+      // Вычисляем количество промеж. элементов
+      kolPromElementov = Math.abs(indexMax - indexMin) - 1;
+
+      // ВЫЧИСЛЯЕМ произведение промеж. элементов
+
+      if (kolPromElementov !== 1 && kolPromElementov !== 0) {
+        if (indexMin < indexMax) {
+          for (let i = indexMin + 1; i < indexMax; i++) {
+            proizvedenie = proizvedenie * arrayNumber[i];
+          }
+        }
+
+        if (indexMin > indexMax) {
+          for (let i = indexMax + 1; i < indexMin; i++) {
+            proizvedenie = proizvedenie * arrayNumber[i];
+          }
+        }
+        console.log(
+          "произведение элементов расположенных между максимальным и минимальным // " +
+            proizvedenie
+        );
+      } else
+        console.log(
+          "Элементов между min и max 0 или 1. Произведение не вычислено."
+        );
+
+      console.log(
+        "Количество элементов между максимальным и минимальным значением массива // " +
+          kolPromElementov
+      );
+
+    </script>
+  </head>
+  <body>
+    <h1>
+      В числовой последовательности определить количество и произведение
+      элементов расположенных между максимальным и минимальным. Максимальный и
+      минимальный элементы в расчет количества и произведения не включать
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>08 июня 2022 года</p>
+  </body>
+</html>

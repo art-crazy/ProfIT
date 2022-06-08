@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+
+      let lengthMassive = Number(
+        prompt("Введи количество чисел в последовательности")
+      );
+      let arrayNumber = new Array(lengthMassive);
+      let arrayZero = [];
+      let k = 0;
+
+      // РЕШЕНИЕ
+
+      for (let i = 0; i < arrayNumber.length; i++) {
+        arrayNumber[i] = prompt("Введите целое число:");
+      }
+
+      for (let i = 0; i < arrayNumber.length; i++) {
+        console.log("Заданный массив // " + arrayNumber[i]);
+        if (arrayNumber[i] % 2 == 0) {
+          arrayZero[k] = arrayNumber[i];
+          k++;
+        }
+      }
+
+      if (arrayZero.length == 0) {
+        console.log("Четные числа в последовательности отсутствуют");
+      }
+
+      for (let i = 0; i < arrayZero.length; i++) {
+        console.log("Четные числа из последовательности // " + arrayZero[i]);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>
+      Дана последовательность натуральных чисел. Создать массив из четных чисел
+      заданной последовательности. Если таких чисел нет, то вывести сообщение об
+      этом
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>08 июня 2022 года</p>
+  </body>
+</html>
