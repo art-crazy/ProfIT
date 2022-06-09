@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+
+      newArray = [];
+
+      function createNDimArray(dimensions) {
+        if (dimensions.length > 0) {
+          var dim = dimensions[0];
+          var rest = dimensions.slice(1);
+          newArray = new Array();
+          for (var i = 0; i < dim; i++) {
+            newArray[i] = createNDimArray(rest);
+          }
+          return newArray;
+        } else {
+          return undefined;
+        }
+      }
+
+      createNDimArray([7]);
+
+      console.log(newArray);
+    </script>
+  </head>
+  <body>
+    <h1>
+      Вычислить матрицу по заданному выражению 3*T ^T + E + T ^2, где T –
+      треугольная квадратная матрица порядка N, E – единичная матрица порядка N,
+      T ^T - транспонированная матрица T.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>10 июня 2022 года</p>
+  </body>
+</html>
