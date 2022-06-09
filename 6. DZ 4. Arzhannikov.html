@@ -13,11 +13,11 @@
 
       switch (option) { // выбираем способ заполнения массива
         case 1:
-          lengthMassive = Number(
-            prompt("Введи количество чисел в последовательности")
+        J = Number(
+            prompt("Введи количество чисел в последовательности (J)")
           );
 
-          array.length = lengthMassive;
+          array.length = J;
 
           for (let i = 0; i < array.length; i++) {
             array[i] = Number(prompt("Введите целое число:"));
@@ -30,11 +30,11 @@
           break;
 
         case 3:
-          lengthMassive = Number(
-            prompt("Введи количество чисел в последовательности")
+        J = Number(
+            prompt("Введи количество чисел в последовательности (J)")
           );
 
-          array.length = lengthMassive;
+          array.length = J;
 
           for (let i = 0; i < array.length; i++) {
             array[i] = Math.floor(Math.random() * (101 - 1) + 1);

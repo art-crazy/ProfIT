@@ -2,10 +2,6 @@
   <head>
     <script>
       // ВВОД ИСХОДНЫХ ДАННЫХ
-      let lengthMassive = Number(
-        prompt("Введи количество чисел в последовательности")
-      );
-      let arrayNumber = new Array(lengthMassive);
       let numberMax;
       let numberMin;
       let indexMax = 0;
@@ -13,15 +9,50 @@
       let proizvedenie = 1;
       let kolPromElementov;
 
-      // РЕШЕНИЕ
+      option = Number(
+        prompt(
+          "Выбери способ заполнения массива.\n1 - заполнение вручную.\n2 - строго заданные значения массива.\n3 - рандомные значения от нуля до двадцати"
+        )
+      );
 
-      for (let i = 0; i < arrayNumber.length; i++) {
-        arrayNumber[i] = Number(prompt("Введите целое число:"));
+      let arrayNumber = [];
+
+      switch (
+        option // выбираем способ заполнения массива
+      ) {
+        case 1:
+          lengthMassive = Number(
+            prompt("Введи количество чисел в последовательности")
+          );
+
+          arrayNumber.length = lengthMassive;
+
+          for (let i = 0; i < arrayNumber.length; i++) {
+            arrayNumber[i] = Number(prompt("Введите целое число:"));
+          }
+
+          break;
+
+        case 2:
+          arrayNumber = [64, 91, 73, 23, 15, 68, 52, 41, 8, 7, 67];
+          break;
+
+        case 3:
+          lengthMassive = Number(
+            prompt("Введи количество чисел в последовательности")
+          );
+
+          arrayNumber.length = lengthMassive;
+
+          for (let i = 0; i < arrayNumber.length; i++) {
+            arrayNumber[i] = Math.floor(Math.random() * (20 - 0) + 0);
+          }
       }
 
       numberMin = arrayNumber[0];
       numberMax = arrayNumber[0];
 
+      // РЕШЕНИЕ
       // Вычисляем позицию MIN числа
       for (let i = 0; i < arrayNumber.length; i++) {
         console.log("Заданный массив // " + arrayNumber[i]);
@@ -71,7 +102,6 @@
         "Количество элементов между максимальным и минимальным значением массива // " +
           kolPromElementov
       );
-
     </script>
   </head>
   <body>

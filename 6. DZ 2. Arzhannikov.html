@@ -3,22 +3,54 @@
     <script>
       // ВВОД ИСХОДНЫХ ДАННЫХ
 
-      let lengthMassive = Number(
-        prompt("Введи количество чисел в последовательности")
-      );
-      let arrayNumber = new Array(lengthMassive);
       let arrayZero = [];
       let k = 0;
 
+      option = Number(
+        prompt(
+          "Выбери способ заполнения массива.\n1 - заполнение вручную.\n2 - строго заданные значения массива.\n3 - рандомные значения от нуля до ста"
+        )
+      );
+
+      let arrayNumber = [];
+
+      switch (
+        option // выбираем способ заполнения массива
+      ) {
+        case 1:
+          lengthMassive = Number(
+            prompt("Введи количество чисел в последовательности")
+          );
+
+          arrayNumber.length = lengthMassive;
+
+          for (let i = 0; i < arrayNumber.length; i++) {
+            arrayNumber[i] = Number(prompt("Введите целое число:"));
+          }
+
+          break;
+
+        case 2:
+          arrayNumber = [64, 91, 73, 23, 15, 68, 52, 41, 8, 7, 67];
+          break;
+
+        case 3:
+          lengthMassive = Number(
+            prompt("Введи количество чисел в последовательности")
+          );
+
+          arrayNumber.length = lengthMassive;
+
+          for (let i = 0; i < arrayNumber.length; i++) {
+            arrayNumber[i] = Math.floor(Math.random() * (100 - 0) + 0);
+          }
+      }
       // РЕШЕНИЕ
 
-      for (let i = 0; i < arrayNumber.length; i++) {
-        arrayNumber[i] = Number(prompt("Введите целое число:"));
-      }
+      console.log("Заданный массив // " + arrayNumber);
 
       for (let i = 0; i < arrayNumber.length; i++) {
-        console.log("Заданный массив // " + arrayNumber[i]);
-        if (arrayNumber[i] % 2 == 0) {
+        if (arrayNumber[i] % 2 == 0 && arrayNumber[i] !== 0) {
           arrayZero[k] = arrayNumber[i];
           k++;
         }
@@ -28,9 +60,7 @@
         console.log("Четные числа в последовательности отсутствуют");
       }
 
-      for (let i = 0; i < arrayZero.length; i++) {
-        console.log("Четные числа из последовательности // " + arrayZero[i]);
-      }
+      console.log("Четные числа из последовательности // " + arrayZero);
     </script>
   </head>
   <body>
