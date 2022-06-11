@@ -3,25 +3,138 @@
     <script>
       // ВВОД ИСХОДНЫХ ДАННЫХ
 
-      newArray = [];
+      let N = Number(prompt("Введи значение N (порядок матрицы)"));
+      let strokaT = N;
+      let stolbecT = N;
+      let arrayT = new Array();
 
-      function createNDimArray(dimensions) {
-        if (dimensions.length > 0) {
-          var dim = dimensions[0];
-          var rest = dimensions.slice(1);
-          newArray = new Array();
-          for (var i = 0; i < dim; i++) {
-            newArray[i] = createNDimArray(rest);
+      option = Number(
+        prompt(
+          "Выбери способ заполнения матрицы T.\n1 - заполнение вручную.\n2 - рандомные значения от одного до девяти"
+        )
+      );
+
+      switch (
+        option // выбираем способ заполнения массива
+      ) {
+        case 1:
+          // Матрица T – треугольная квадратная матрица порядка N вручную
+          for (let i = 0; i < strokaT; i++) {
+            arrayT[i] = new Array();
+            for (let j = 0; j < stolbecT; j++) {
+              if (i <= j) {
+                arrayT[i][j] = Number(
+                  prompt("Введите целое число для ячейки [" + i + ":" + j + "]")
+                );
+              } else arrayT[i][j] = 0;
+            }
           }
-          return newArray;
-        } else {
-          return undefined;
+          break;
+
+        case 2:
+          // Матрица T – треугольная квадратная матрица порядка N random
+          for (let i = 0; i < strokaT; i++) {
+            arrayT[i] = new Array();
+            for (let j = 0; j < stolbecT; j++) {
+              arrayT[i][j] = Math.floor(Math.random() * (9 - 1) + 1);
+            }
+          }
+
+          for (let i = 1; i < strokaT; i++) {
+            for (let j = 0; j < stolbecT - 1; j++) {
+              if (i > j) {
+                arrayT[i][j] = 0;
+              }
+            }
+          }
+          break;
+      }
+
+      console.log("Матрица T");
+      console.log(arrayT);
+
+      // Матрица E – единичная матрица порядка N
+
+      let strokaE = N;
+      let stolbecE = N;
+      let arrayE = new Array();
+      for (let i = 0; i < strokaE; i++) {
+        arrayE[i] = new Array();
+        for (let j = 0; j < stolbecE; j++) {
+          arrayE[i][j] = 1;
         }
       }
 
-      createNDimArray([7]);
+      console.log("Матрица E");
+      console.log(arrayE);
 
-      console.log(newArray);
+      // Матрица T ^T - транспонированная матрица T
+
+      let strokaTT = N;
+      let stolbecTT = N;
+      let arrayTT = new Array();
+      for (let i = 0; i < strokaTT; i++) {
+        arrayTT[i] = new Array();
+        for (let j = 0; j < stolbecTT; j++) {
+          arrayTT[i][j] = arrayT[j][i];
+        }
+      }
+
+      console.log("Матрица T ^T");
+      console.log(arrayTT);
+
+      // возведение arrayT в квадрат
+
+      arrayTkvadrat = [];
+
+      for (var i = 0; i < arrayT.length; i++) {
+        arrayTkvadrat[i] = [];
+      }
+      for (var k = 0; k < arrayT.length; k++) {
+        for (var i = 0; i < arrayT.length; i++) {
+          var t = 0;
+          for (var j = 0; j < arrayT.length; j++) {
+            t += arrayT[i][j] * arrayT[j][k];
+            arrayTkvadrat[i][k] = t;
+          }
+        }
+      }
+
+      console.log("Матрица T в квадрате");
+      console.log(arrayTkvadrat);
+
+      // умножение матрицы на 3
+
+      arrayTTmultiplication = [];
+
+      for (var i = 0; i < arrayTT.length; i++) {
+        arrayTTmultiplication[i] = [];
+        for (var j = 0; j < arrayTT.length; j++) {
+          arrayTTmultiplication[i][j] = 3 * arrayTT[i][j];
+        }
+      }
+
+      console.log("умножение матрицы T ^T на 3");
+      console.log(arrayTTmultiplication);
+
+      // итоговое сложение
+
+      arrayResult = [];
+      for (var i = 0; i < N; i++) {
+        arrayResult[i] = [];
+        for (var j = 0; j < N; j++) {
+          arrayResult[i][j] = arrayTTmultiplication[i][j] + arrayE[i][j];
+        }
+      }
+
+      for (var i = 0; i < N; i++) {
+        for (var j = 0; j < N; j++) {
+          arrayResult[i][j] = arrayResult[i][j] + arrayTkvadrat[i][j];
+        }
+      }
+
+      console.log("Результат выражения");
+      console.log(arrayResult);
     </script>
   </head>
   <body>
@@ -31,6 +144,6 @@
       T ^T - транспонированная матрица T.
     </h1>
     <h1>Работа в браузере с JS</h1>
-    <p>10 июня 2022 года</p>
+    <p>12 июня 2022 года</p>
   </body>
 </html>
