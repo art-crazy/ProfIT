@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+      let arrayZero = [];
+      let k = 0;
+
+      option = Number(
+        prompt(
+          "Выбери способ заполнения массива.\n1 - заполнение вручную.\n2 - строго заданные значения массива.\n3 - рандомные значения от нуля до десяти"
+        )
+      );
+
+      let arrayNumber = [];
+
+      switch (
+        option // выбираем способ заполнения массива
+      ) {
+        case 1:
+          lengthMassive = Number(
+            prompt("Введи количество чисел в последовательности")
+          );
+
+          arrayNumber.length = lengthMassive;
+
+          for (let i = 0; i < arrayNumber.length; i++) {
+            arrayNumber[i] = Number(prompt("Введите целое число:"));
+          }
+
+          break;
+
+        case 2:
+          arrayNumber = [
+            64, 1, 33, 23, 15, 68, 52, 8, 8, 44, 55, 66, 54, 43, 67,
+          ];
+          break;
+
+        case 3:
+          lengthMassive = Number(
+            prompt("Введи количество чисел в последовательности")
+          );
+
+          arrayNumber.length = lengthMassive;
+
+          for (let i = 0; i < arrayNumber.length; i++) {
+            arrayNumber[i] = Math.floor(Math.random() * (10 - 0) + 0);
+          }
+      }
+
+      // РЕШЕНИЕ
+
+      let countMax = 0;
+      let countPresent = 0;
+      let arrayMax = [];
+      let resultNumber;
+
+      // Определяем количество повторений у самого часто встречающегося числа
+      for (let i = 0; i < arrayNumber.length; i++) {
+        for (let j = i; j < arrayNumber.length; j++) {
+          if (arrayNumber[i] == arrayNumber[j]) {
+            countPresent++;
+          }
+          if (countPresent > countMax) {
+            countMax = countPresent;
+            resultNumber = arrayNumber[i];
+          }
+        }
+        countPresent = 0;
+      }
+
+      // Создаем массив из одинаковых-самых часто встречающихся чисел
+      for (let i = 0; i < arrayNumber.length; i++) {
+        for (let j = i; j < arrayNumber.length; j++) {
+          if (arrayNumber[i] == arrayNumber[j]) {
+            countPresent++;
+          }
+          if (countPresent == countMax && j == arrayNumber.length - 1) {
+            arrayMax.push(arrayNumber[i]);
+          }
+        }
+        countPresent = 0;
+      }
+
+      // поиск MIN
+      for (let i = 0; i < arrayNumber.length; i++) {
+        if (resultNumber > arrayNumber[i]) {
+          resultNumber = arrayNumber[i];
+        }
+      }
+
+      console.log("countMax = " + countMax);
+
+      if (countMax !== 1) {
+        console.log("Массив");
+        console.log(arrayNumber);
+        console.log("");
+        console.log("Количество повторений: " + countMax);
+        console.log("Самое часто встречаюееся число: " + resultNumber);
+        console.log(arrayMax);
+      } else {
+        console.log("Массив");
+        console.log(arrayNumber);
+        console.log("Все значения уникальны");
+      }
+    </script>
+  </head>
+  <body>
+    <h1>
+      В массиве целых чисел найти наиболее часто встречающееся число. Если таких
+      чисел несколько, то определить наименьшее из них.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>12 июня 2022 года</p>
+  </body>
+</html>
