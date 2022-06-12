@@ -30,9 +30,7 @@
           break;
 
         case 2:
-          arrayNumber = [
-            64, 1, 33, 23, 15, 68, 52, 8, 8, 44, 55, 66, 54, 43, 67,
-          ];
+          arrayNumber = [64, 3, 3, 23, 15, 1, 1, 8, 8, 44, 55, 66, 54, 43, 67];
           break;
 
         case 3:
@@ -82,21 +80,26 @@
       }
 
       // поиск MIN
-      for (let i = 0; i < arrayNumber.length; i++) {
-        if (resultNumber > arrayNumber[i]) {
-          resultNumber = arrayNumber[i];
+      for (let i = 0; i < arrayMax.length; i++) {
+        if (resultNumber > arrayMax[i]) {
+          resultNumber = arrayMax[i];
         }
       }
 
-      console.log("countMax = " + countMax);
-
+      // ВЫВОД
       if (countMax !== 1) {
         console.log("Массив");
         console.log(arrayNumber);
         console.log("");
         console.log("Количество повторений: " + countMax);
-        console.log("Самое часто встречаюееся число: " + resultNumber);
-        console.log(arrayMax);
+
+        if (arrayMax.length > 1) {
+          console.log("Массив из самых часто встречающихся чисел: ");
+          console.log(arrayMax);
+          console.log(
+            "Минимальное число из часто встречающихся: " + resultNumber
+          );
+        } else console.log("Самое часто встречаюееся число: " + resultNumber);
       } else {
         console.log("Массив");
         console.log(arrayNumber);
