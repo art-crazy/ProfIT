@@ -3,8 +3,6 @@
     <script>
       // ВВОД ИСХОДНЫХ ДАННЫХ
 
-      let line = Number(prompt("Введи значение M (количество строк матрицы)"));
-      let column = line * 2;
       let matrixC = [];
       let matrixD = [];
       let matrixE = [];
@@ -13,19 +11,49 @@
       let summLeft = 0;
       let summRight = 0;
 
-      // matrixC = [
-      //   [1, 3, 9, 11, 16, 19],
-      //   [2, 4, 6, 15, 5, 4],
-      //   [5, 7, 8, 16, 2, 0],
-      // ];
+      // --
+      option = Number(
+        prompt(
+          "Выбери способ заполнения массива.\n1 - заполнение вручную.\n2 - строго заданные значения массива.\n3 - рандомные значения от нуля до четырех"
+        )
+      );
 
-      // Заполнили матрицу рандомными числами от 1 до 9
-      for (let i = 0; i < line; i++) {
-        matrixC[i] = new Array();
-        for (let j = 0; j < line * 2; j++) {
-          matrixC[i][j] = Math.floor(Math.random() * (4 - 1) + 1);
-        }
+      switch (
+        option // выбираем способ заполнения массива
+      ) {
+        case 1:
+          line = Number(prompt("Введи значение M (количество строк матрицы)"));
+
+          for (let i = 0; i < line; i++) {
+            matrixC[i] = new Array();
+            for (let j = 0; j < line * 2; j++) {
+              matrixC[i][j] = Number(
+                prompt("Введите целое число для ячейки [" + i + ":" + j + "]")
+              );
+            }
+          }
+          break;
+
+        case 2:
+          matrixC = [
+            [1, 3, 9, 11, 16, 19],
+            [2, 4, 6, 15, 5, 4],
+            [5, 7, 8, 16, 2, 0],
+          ];
+          break;
+
+        case 3:
+          line = Number(prompt("Введи значение M (количество строк матрицы)"));
+
+          for (let i = 0; i < line; i++) {
+            matrixC[i] = new Array();
+            for (let j = 0; j < line * 2; j++) {
+              matrixC[i][j] = Math.floor(Math.random() * (4 - 1) + 1);
+            }
+          }
+          break;
       }
+      // --
 
       // Вычисляем сумму левой половины matrixC и объеденяем левую половину в отдельный массив matrixLeftC
       for (let i = 0; i < matrixC.length; i++) {
@@ -56,7 +84,6 @@
       }
 
       // Расположить в матрице D элементы стоящие на побочной диагонали в порядке возрастания, то есть получить матрицу Е
-
       for (let i = 0; i < matrixD.length; i++) {
         // Копируем матрицу D в матрицу E
         matrixE[i] = [];
@@ -67,7 +94,6 @@
 
       // сортируем побочную диагональ
       for (let i = 0; i < matrixE.length - 1; i++) {
-        // пузырьковая
         for (let j = i + 1; j < matrixE.length; j++) {
           if (
             matrixE[j][matrixE.length - 1 - j] >
@@ -88,14 +114,6 @@
       console.log(matrixC);
 
       console.log("");
-      console.log(
-        "Сумма значений левой половины: " +
-          summLeft +
-          ". Сумма значений правой половины: " +
-          summRight
-      );
-
-      console.log("");
       console.log("Матрица D");
       console.log(matrixD);
 
@@ -104,6 +122,13 @@
       console.log(matrixE);
 
       console.log("");
+      console.log(
+        "Сумма значений левой половины: " +
+          summLeft +
+          ". Сумма значений правой половины: " +
+          summRight
+      );
+
       if (summRight > summLeft) {
         console.log(
           "В правой половине матрицы C сумма всех элементов больше, чем в левой"
