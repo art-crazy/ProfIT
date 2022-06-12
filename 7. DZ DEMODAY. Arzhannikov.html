@@ -14,7 +14,7 @@
       // --
       option = Number(
         prompt(
-          "Выбери способ заполнения массива.\n1 - заполнение вручную.\n2 - строго заданные значения массива.\n3 - рандомные значения от нуля до пяти"
+          "Выбери способ заполнения массива.\n1 - заполнение вручную.\n2 - строго заданные значения массива.\n3 - рандомные значения от одного до пяти"
         )
       );
 
@@ -23,6 +23,17 @@
       ) {
         case 1:
           line = Number(prompt("Введи значение M (количество строк матрицы)"));
+          // проверка корректности данных
+          if (isNaN(line) || line < 1) {
+            do
+              line = Number(
+                prompt(
+                  "Введены некорректные данные. Введи положительно число >= 1"
+                )
+              );
+            while (line < 1 || isNaN(line));
+          }
+          // <->
 
           for (let i = 0; i < line; i++) {
             matrixC[i] = new Array();
@@ -30,6 +41,15 @@
               matrixC[i][j] = Number(
                 prompt("Введите целое число для ячейки [" + i + ":" + j + "]")
               );
+              // проверка корректности данных
+              if (isNaN(matrixC[i][j])) {
+                do
+                  matrixC[i][j] = Number(
+                    prompt("Введены некорректные данные. Введи число")
+                  );
+                while (isNaN(matrixC[i][j]));
+              }
+              // <->
             }
           }
           break;
@@ -44,6 +64,17 @@
 
         case 3:
           line = Number(prompt("Введи значение M (количество строк матрицы)"));
+          // проверка корректности данных
+          if (isNaN(line) || line < 1) {
+            do
+              line = Number(
+                prompt(
+                  "Введены некорректные данные. Введи положительно число >= 1"
+                )
+              );
+            while (line < 1 || isNaN(line));
+          }
+          // <->
 
           for (let i = 0; i < line; i++) {
             matrixC[i] = new Array();
@@ -109,21 +140,17 @@
 
       // ВЫВОД
 
-      console.log("");
-      console.log("Матрица С(М, 2М)");
+      console.log("\nМатрица С(М, 2М)");
       console.log(matrixC);
 
-      console.log("");
-      console.log("Матрица D");
+      console.log("\nМатрица D");
       console.log(matrixD);
 
-      console.log("");
-      console.log("Матрица E");
+      console.log("\nМатрица E");
       console.log(matrixE);
 
-      console.log("");
       console.log(
-        "Сумма значений левой половины: " +
+        "\nСумма значений левой половины: " +
           summLeft +
           ". Сумма значений правой половины: " +
           summRight
