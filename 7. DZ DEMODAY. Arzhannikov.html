@@ -1,0 +1,138 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+
+      let line = Number(prompt("Введи значение M (количество строк матрицы)"));
+      let column = line * 2;
+      let matrixC = [];
+      let matrixD = [];
+      let matrixE = [];
+      let matrixLeftC = [];
+      let matrixRight = [];
+      let summLeft = 0;
+      let summRight = 0;
+
+      // matrixC = [
+      //   [1, 3, 9, 11, 16, 19],
+      //   [2, 4, 6, 15, 5, 4],
+      //   [5, 7, 8, 16, 2, 0],
+      // ];
+
+      // Заполнили матрицу рандомными числами от 1 до 9
+      for (let i = 0; i < line; i++) {
+        matrixC[i] = new Array();
+        for (let j = 0; j < line * 2; j++) {
+          matrixC[i][j] = Math.floor(Math.random() * (4 - 1) + 1);
+        }
+      }
+
+      // Вычисляем сумму левой половины matrixC и объеденяем левую половину в отдельный массив matrixLeftC
+      for (let i = 0; i < matrixC.length; i++) {
+        matrixLeftC[i] = [];
+        for (let j = 0; j < matrixC.length; j++) {
+          matrixLeftC[i][j] = matrixC[i][j];
+          summLeft = summLeft + matrixC[i][j];
+        }
+      }
+
+      // Вычисляем сумму правой половины matrixC и объеденяем правую половину в отдельный массив matrixRight
+      for (let i = 0; i < matrixC.length; i++) {
+        let k = 0;
+        matrixRight[i] = [];
+        for (let j = matrixC.length; j < matrixC.length * 2; j++) {
+          matrixRight[i][k] = matrixC[i][j];
+          k++;
+          summRight = summRight + matrixC[i][j];
+        }
+      }
+
+      // Составляем матрицу D(M, M) из произведений соответствующих элементов половин матрицы С.
+      for (let i = 0; i < matrixRight.length; i++) {
+        matrixD[i] = [];
+        for (let j = 0; j < matrixRight.length; j++) {
+          matrixD[i][j] = matrixLeftC[i][j] * matrixRight[i][j];
+        }
+      }
+
+      // Расположить в матрице D элементы стоящие на побочной диагонали в порядке возрастания, то есть получить матрицу Е
+
+      for (let i = 0; i < matrixD.length; i++) {
+        // Копируем матрицу D в матрицу E
+        matrixE[i] = [];
+        for (j = 0; j < matrixD.length; j++) {
+          matrixE[i][j] = matrixD[i][j];
+        }
+      }
+
+      // сортируем побочную диагональ
+      for (let i = 0; i < matrixE.length - 1; i++) {
+        // пузырьковая
+        for (let j = i + 1; j < matrixE.length; j++) {
+          if (
+            matrixE[j][matrixE.length - 1 - j] >
+            matrixE[i][matrixE.length - 1 - i]
+          ) {
+            let t = matrixE[j][matrixE.length - 1 - j];
+            matrixE[j][matrixE.length - 1 - j] =
+              matrixE[i][matrixE.length - 1 - i];
+            matrixE[i][matrixE.length - 1 - i] = t;
+          }
+        }
+      }
+
+      // ВЫВОД
+
+      console.log("");
+      console.log("Матрица С(М, 2М)");
+      console.log(matrixC);
+
+      console.log("");
+      console.log(
+        "Сумма значений левой половины: " +
+          summLeft +
+          ". Сумма значений правой половины: " +
+          summRight
+      );
+
+      console.log("");
+      console.log("Матрица D");
+      console.log(matrixD);
+
+      console.log("");
+      console.log("Матрица E");
+      console.log(matrixE);
+
+      console.log("");
+      if (summRight > summLeft) {
+        console.log(
+          "В правой половине матрицы C сумма всех элементов больше, чем в левой"
+        );
+      } else if (summRight < summLeft) {
+        console.log(
+          "В левой половине матрицы C сумма всех элементов больше, чем в правой"
+        );
+      } else
+        console.log(
+          "В левой и правой половинах матрицы C сумма всех элементов равна"
+        );
+    </script>
+  </head>
+  <body>
+    <h1>Дана числовая матрица С(М, 2М).</h1>
+    <h1>
+      1) Определить в какой из половин (правой / левой) сумма всех элементов
+      больше, чем в другой.
+    </h1>
+    <h1>
+      2) Составить матрицу D(M, M) из произведений соответствующих элементов
+      половин матрицы С.
+    </h1>
+    <h1>
+      3) Расположить в матрице D элементы стоящие на побочной диагонали в
+      порядке возрастания, то есть получить матрицу Е. Напечатать матрицы D, Е.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>12 июня 2022 года</p>
+  </body>
+</html>
