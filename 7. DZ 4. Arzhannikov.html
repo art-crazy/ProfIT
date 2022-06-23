@@ -2,53 +2,52 @@
   <head>
     <script>
       // ВВОД ИСХОДНЫХ ДАННЫХ
-      var a = 0,
-        b = 0,
-        e = 0.01,
-        dx = 0,
+      var intervalLow = 0,
+      intervalHigh = 0,
+      accuracy = 0.01,
+        intervalMid = 0,
         xi = 0;
       main();
       function main() {
-        a = parseFloat(prompt("Введите начало отрезка: a = ", a));
-        b = parseFloat(prompt("Введите конец отрезка: b = ", b));
-        e = parseFloat(prompt("Введите точность: e = ", e));
+        intervalLow = parseFloat(prompt("Введите начало отрезка: intervalLow = ", intervalLow));
+        intervalHigh = parseFloat(prompt("Введите конец отрезка: intervalHigh = ", intervalHigh));
+        accuracy = parseFloat(prompt("Введите точность: accuracy = ", accuracy));
 
-        if (f(a) == 0) {
-          console.log("Корень уравнения: " + a);
-        } else if (f(b) == 0) {
-          console.log("Корень уравнения: " + b);
+        if (f(intervalLow) == 0) {
+          console.log("Корень уравнения: " + intervalLow);
+        } else if (f(intervalHigh) == 0) {
+          console.log("Корень уравнения: " + intervalHigh);
         }
 
-        while (b - a > e) {
-          dx = (b - a) / 2;
-          xi = a + dx;
+        while (intervalHigh - intervalLow > accuracy) {
+          intervalMid = (intervalHigh - intervalLow) / 2; 
+          xi = intervalLow + intervalMid;
 
-          if (f(a) * f(b) < 0) {
-            b = xi;
+          if (f(intervalLow) * f(intervalHigh) < 0) {
+            intervalHigh = xi;
           } else {
-            a = xi;
+            intervalLow = xi;
           }
-          console.log("я тут был");
           showResult();
         }
       }
 
       function f(x) {
-        var y = 4 - Math.exp(x) - 2 * x * x; // уравнение
+        var y = 3 * x - Math.sin(x) - 7; // уравнение
         return y;
       }
 
       function showResult() {
-        console.log("a = " + a);
-        console.log("b = " + b);
+        console.log("intervalLow = " + intervalLow);
+        console.log("intervalHigh = " + intervalHigh);
         console.log("x = " + xi);
-        console.log("Погрешность приближения d = " + (b - a));
+        console.log("Погрешность приближения d = " + (intervalHigh - intervalLow));
       }
 
-      console.log("2a = " + a);
-        console.log("2b = " + b);
+      console.log("2 intervalLow = " + intervalLow);
+        console.log("2 intervalHigh = " + intervalHigh);
         console.log("2x = " + xi);
-        console.log("2Погрешность приближения d = " + (b - a));
+        console.log("2Погрешность приближения d = " + (intervalHigh - intervalLow));
     </script>
   </head>
   <body>

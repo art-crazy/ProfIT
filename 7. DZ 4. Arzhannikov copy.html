@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+
+      let accuracy = 0.1;
+      let intervalLow; // x1?
+      let intervalHigh; // x2?
+      let F1;
+      let F2;
+      let F3;
+      let count = 0;
+
+      function calcX(x) {
+        return 3 * x - Math.sin(x) - 7;
+      }
+
+      do {
+        if (count > 0) {
+          alert(
+            "[" + intervalLow + "," + intervalHigh + "] - не интервал изоляции"
+          );
+        }
+
+        intervalLow = Number(prompt("Введи значение начала интервала"));
+        intervalHigh = Number(prompt("Введи значение конца интервала"));
+
+        F1 = calcX(intervalLow);
+        F2 = calcX(intervalHigh);
+
+        count++;
+      } while (F1 * F2 > 0);
+
+      intervalMid = (intervalLow + intervalHigh) / 2; //т.е. берем точку intervalMid на середине интервала [Low,High]
+
+      do {
+        F3 = calcX(intervalMid);
+
+        if (F3 == 0) {
+          intervalLow = intervalMid;
+          intervalHigh = intervalMid;
+          break;
+        }
+
+        if (F1 * F3 < 0) {
+          // то полуинтервал [intervalLow,intervalHigh] содержит корень
+          intervalHigh = intervalMid;
+          F2 = F3;
+          break;
+        } else (intervalLow = intervalHigh) && (F1 = F3);
+      } while (Math.abs(intervalLow - intervalHigh) >= accuracy);
+
+      console.log("Искомый корень х3 = " + intervalHigh);
+    </script>
+  </head>
+  <body>
+    <h1>
+      Найти корни нелинейного уравнения F(x)=3x-sin(x)-7 методом половинного
+      деления. Вычисление значений F(x) организовать через функцию.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>23 июня 2022 года</p>
+  </body>
+</html>
