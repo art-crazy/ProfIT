@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+      var a = 0,
+        b = 0,
+        e = 0.01,
+        dx = 0,
+        xi = 0;
+      main();
+      function main() {
+        a = parseFloat(prompt("Введите начало отрезка: a = ", a));
+        b = parseFloat(prompt("Введите конец отрезка: b = ", b));
+        e = parseFloat(prompt("Введите точность: e = ", e));
+
+        if (f(a) == 0) {
+          console.log("Корень уравнения: " + a);
+        } else if (f(b) == 0) {
+          console.log("Корень уравнения: " + b);
+        }
+
+        while (b - a > e) {
+          dx = (b - a) / 2;
+          xi = a + dx;
+
+          if (f(a) * f(b) < 0) {
+            b = xi;
+          } else {
+            a = xi;
+          }
+          console.log("я тут был");
+          showResult();
+        }
+      }
+
+      function f(x) {
+        var y = 4 - Math.exp(x) - 2 * x * x; // уравнение
+        return y;
+      }
+
+      function showResult() {
+        console.log("a = " + a);
+        console.log("b = " + b);
+        console.log("x = " + xi);
+        console.log("Погрешность приближения d = " + (b - a));
+      }
+
+      console.log("2a = " + a);
+        console.log("2b = " + b);
+        console.log("2x = " + xi);
+        console.log("2Погрешность приближения d = " + (b - a));
+    </script>
+  </head>
+  <body>
+    <h1>
+      Найти корни нелинейного уравнения F(x)=3x-sin(x)-7 методом половинного
+      деления. Вычисление значений F(x) организовать через функцию.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>23 июня 2022 года</p>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+
+      let n1 = 99;
+      let n2 = 100;
+      let result;
+
+      // решение
+      function calcF(p) {
+        if (p <= 5) {
+          return 2 * p;
+        }
+        if (p > 5 && p % 2 == 0) {
+          return calcF(p - 2) + 3 * calcF(p / 2) + p;
+        }
+        if (p > 5 && p % 2 == 1) {
+          return calcF(p - 1) + calcF(p - 2) + calcF(p - 3);
+        }
+      }
+
+      result = calcF(n1) + calcF(n2);
+
+      // вывод
+      console.log("Result = " + result);
+    </script>
+  </head>
+  <body>
+    <h1>Алгоритм вычисления функции F(n) задан следующими соотношениями:</h1>
+    <h1>F(n) = 2n при n  5</h1>
+    <h1>F(n) = F(n–2) + 3F(n/2) + n, если n > 5 и чётно,</h1>
+    <h1>F(n) = F(n–1) + F(n–2) + F(n–3), если n > 5 и нечётно.</h1>
+    <h1>
+      Вычислить значение функции F(99) + F(100) используя рекурсивный алгоритм.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>23 июня 2022 года</p>
+  </body>
+</html>
