@@ -2,52 +2,60 @@
   <head>
     <script>
       // ВВОД ИСХОДНЫХ ДАННЫХ
-      var intervalLow = 0,
-      intervalHigh = 0,
-      accuracy = 0.01,
-        intervalMid = 0,
-        xi = 0;
-      main();
-      function main() {
-        intervalLow = parseFloat(prompt("Введите начало отрезка: intervalLow = ", intervalLow));
-        intervalHigh = parseFloat(prompt("Введите конец отрезка: intervalHigh = ", intervalHigh));
-        accuracy = parseFloat(prompt("Введите точность: accuracy = ", accuracy));
 
-        if (f(intervalLow) == 0) {
-          console.log("Корень уравнения: " + intervalLow);
-        } else if (f(intervalHigh) == 0) {
-          console.log("Корень уравнения: " + intervalHigh);
+      let accuracy = 0.0001;
+      let x1;
+      let x2;
+      let x3;
+      let F1;
+      let F2;
+      let F3;
+      let count = 0;
+
+      function calcX(x) {
+        return 3 * x - Math.sin(x) - 7;
+      }
+
+      // РЕШЕНИЕ
+      do {
+        if (count > 0) {
+          alert("[" + x1 + "," + x2 + "] - не интервал изоляции");
         }
 
-        while (intervalHigh - intervalLow > accuracy) {
-          intervalMid = (intervalHigh - intervalLow) / 2; 
-          xi = intervalLow + intervalMid;
+        x1 = Number(prompt("Введи значение начала интервала", 0));
+        x2 = Number(prompt("Введи значение конца интервала", 0));
 
-          if (f(intervalLow) * f(intervalHigh) < 0) {
-            intervalHigh = xi;
+        F1 = calcX(x1);
+        F2 = calcX(x2);
+        count++;
+      } while (F1 * F2 > 0);
+
+      function check(n) {
+        if (n < 0) {
+          n = -1.0;
+        }
+        if (n > 0) {
+          n = 1.0;
+        }
+        return n;
+      }
+
+      if (Math.abs(x2 - x1) >= accuracy) {
+        do {
+          x3 = (x1 + x2) / 2;
+          F3 = calcX(x3);
+
+          if (check(F3) * check(F1) <= 0.0) {
+            x2 = x3;
           } else {
-            intervalLow = xi;
+            x1 = x3;
+            F1 = F3;
           }
-          showResult();
-        }
+        } while (Math.abs(x2 - x1) >= accuracy);
       }
 
-      function f(x) {
-        var y = 3 * x - Math.sin(x) - 7; // уравнение
-        return y;
-      }
-
-      function showResult() {
-        console.log("intervalLow = " + intervalLow);
-        console.log("intervalHigh = " + intervalHigh);
-        console.log("x = " + xi);
-        console.log("Погрешность приближения d = " + (intervalHigh - intervalLow));
-      }
-
-      console.log("2 intervalLow = " + intervalLow);
-        console.log("2 intervalHigh = " + intervalHigh);
-        console.log("2x = " + xi);
-        console.log("2Погрешность приближения d = " + (intervalHigh - intervalLow));
+      // ВЫВОД
+      console.log("Корень равен: " + x3);
     </script>
   </head>
   <body>
