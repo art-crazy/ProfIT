@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+      let numberN = Number(prompt("Введи нетрицательное целое число N", 0));
+      let numberS = Number(prompt("Введи нетрицательное целое число S", 0));
+
+      function summNumber(N) {
+        let digit = N % 10;
+        if (N > 0) {
+          return digit + summNumber((N - digit) / 10);
+        }
+
+        return digit;
+      }
+
+      summ = summNumber(numberN);
+
+      function equal(summ, numberS) {
+        return summ == numberS;
+      }
+
+      console.log("Сумма цифр числа N = " + summ);
+      console.log("Сумма цифр числа N == S // " + equal(summ, numberS));
+    </script>
+  </head>
+  <body>
+    <h1>
+      Описать рекурсивную функцию equal(N, S) (где N и S – неотрицательные целые
+      числа), которая проверяет, совпадает ли сумма цифр в десятичной записи
+      числа N со значением S.
+    </h1>
+    <h1>
+      Например: equal(12345,15) = true, equal(24,7) = false, equal(100,1) =
+      true.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>24 июня 2022 года</p>
+  </body>
+</html>
