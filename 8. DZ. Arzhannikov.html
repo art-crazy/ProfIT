@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+
+      let N;
+      do {
+        N = Number(prompt("Введи число N"));
+      } while (N <= 0 || N > 100);
+
+      let matrixN = [];
+      matrixN.length = N;
+      let sumRoads = 0;
+
+      for (let i = 0; i < matrixN.length; i++) {
+        matrixN[i] = new Array();
+      }
+
+      for (let i = 0; i < matrixN.length; i++) {
+        for (let j = 0; j < matrixN.length; j++) {
+          if (j + i < matrixN.length) {
+            matrixN[i][j] = Math.floor(Math.random() * (2 - 0) + 0);
+            if (matrixN[i][j] == 1) {
+              // matrixN[j][i] = 1;
+              sumRoads++;
+            }
+          } else matrixN[i][j] = 0;
+          console.log("j = " + j);
+          console.log("i = " + i);
+          if (j + i > matrixN.length) {
+            console.log("был 1 = ");
+            if (matrixN[i][j] == 1) {
+              console.log("был 2 = ");
+              matrixN[j][i] = 1;
+
+              // matrixN[j][i] = 1;
+              sumRoads++;
+            }
+          }
+        }
+      }
+      console.log("Количество дорог = " + sumRoads);
+      console.log(matrixN);
+    </script>
+  </head>
+  <body>
+    <h1>
+      В галактике "Milky Way" на планете "Neptune" есть N городов, некоторые из
+      которых соединены дорогами.
+    </h1>
+    <h1>
+      Император "Maximus" галактики "Milky Way" решил провести инвентаризацию
+      дорог на планете "Neptune". Но, как оказалось, он не силен в математике,
+      поэтому он просит вас сосчитать количество дорог.
+    </h1>
+    <h1>Входные данные:</h1>
+    <h1>
+      В первой строке задается число N (0 ≤ N ≤ 100). В следующих N строках
+      содержится по N чисел, каждое из которых является единичкой или ноликом.
+      Причем, если в позиции (i,j) квадратной матрицы стоит единичка, то i-ый и
+      j-ый города соединены дорогами, а если нолик, то не соединены. Выходные
+      данные
+    </h1>
+    <h1>
+      Выведите одно число – количество дорог на планете "Neptune". Входные
+      данные, за исключением N, можно задать случайной генерацией
+    </h1>
+
+    <h1>Работа в браузере с JS</h1>
+    <p>24 июня 2022 года</p>
+  </body>
+</html>
