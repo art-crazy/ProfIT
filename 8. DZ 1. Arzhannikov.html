@@ -9,8 +9,10 @@
       } while (N <= 0 || N > 100);
 
       let matrixN = [];
-      matrixN.length = N;
       let sumRoads = 0;
+      matrixN.length = N;
+
+      // РЕШЕНИЕ
 
       for (let i = 0; i < matrixN.length; i++) {
         matrixN[i] = new Array();
@@ -18,27 +20,24 @@
 
       for (let i = 0; i < matrixN.length; i++) {
         for (let j = 0; j < matrixN.length; j++) {
-          if (j + i < matrixN.length) {
+          if (i - j < 0) {
             matrixN[i][j] = Math.floor(Math.random() * (2 - 0) + 0);
             if (matrixN[i][j] == 1) {
-              // matrixN[j][i] = 1;
-              sumRoads++;
-            }
-          } else matrixN[i][j] = 0;
-          console.log("j = " + j);
-          console.log("i = " + i);
-          if (j + i > matrixN.length) {
-            console.log("был 1 = ");
-            if (matrixN[i][j] == 1) {
-              console.log("был 2 = ");
-              matrixN[j][i] = 1;
-
-              // matrixN[j][i] = 1;
               sumRoads++;
             }
           }
+
+          if (matrixN[i][j] == 1) {
+            matrixN[j][i] = 1;
+          }
+
+          if (matrixN[i][j] == undefined) {
+            matrixN[i][j] = 0;
+          }
         }
       }
+
+      // ВЫВОД
       console.log("Количество дорог = " + sumRoads);
       console.log(matrixN);
     </script>

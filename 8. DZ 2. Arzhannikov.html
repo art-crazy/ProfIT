@@ -1,0 +1,141 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+
+      /**
+       *
+       * @param graph массив (список смежности для графа)
+       * @param begin начальная вершина для поиска пути
+       * @param final конечная вершина для поиска пути
+       */
+
+      // агоритм поиска в ширину
+      function bfs(graph, start, final) {
+        // graph - смежный список
+        // start - начальная вершина
+        // final - пункт назначения
+        let queue = []; // инициализируем очередь
+        queue.push(start); // добавляем начальную вершину в очередь
+        graph[start].visited = true; // помечаем начальную вершину как посещенную вершину во избежание повторного добавления в очередь
+
+        let path = {}; // обьект для хранения пройденныйх вершин
+
+        while (queue.length > 0) {
+          let checkNode = queue.shift(); // удаляем первый (верхний) элемент из очереди
+          if (checkNode == final) {
+            // если она равна конечной вершине, заканчиваем
+            break;
+          }
+          for (let neighbor of graph[checkNode].connect) {
+            // если сосед не посещался
+            if (!graph[neighbor].visited) {
+              // добавляем его в очередь
+              path[neighbor] = checkNode; // записываем обратный путь
+              queue.push(neighbor); // добавляем новые вершины в очередь
+              graph[neighbor].visited = true; // помечаем соседей посещенными
+            }
+          }
+        }
+
+        let L = 0;
+        let vertexList = []; // список всех вершин на пути
+
+        console.log(
+          "Начальная точка: " +
+            start +
+            ". Конечная точка: " +
+            final +
+            ". Все посещенные вершины - "
+        );
+
+        while (path[final]) {
+          vertexList[L] = final;
+          if (final == start) break;
+          final = path[final];
+          L++;
+        }
+        vertexList.push(start);
+
+        for (let i = 0; i < vertexList.length; i++) {
+          console.log(vertexList[vertexList.length - i - 1]);
+        }
+
+        if (L > 0) {
+          console.log("Длина пути L: " + L);
+        } else {
+          console.log("Такого пути не существует. Error: " + -1);
+        }
+      }
+
+      let adjacencyList = {
+        1: {
+          connect: [2, 6],
+        },
+        2: {
+          connect: [1, 9],
+        },
+        3: {
+          connect: [4, 9],
+        },
+        4: {
+          connect: [5, 3, 6, 7],
+        },
+        5: {
+          connect: [4, 9, 10],
+        },
+        6: {
+          connect: [1, 4, 7],
+        },
+        7: {
+          connect: [4, 6, 8],
+        },
+        8: {
+          connect: [7],
+        },
+        9: {
+          connect: [2, 3, 5, 10],
+        },
+        10: {
+          connect: [9, 5],
+        },
+      };
+      let numberStart = Number(prompt("Введите начальную точку (от 1 до 10)"));
+      let numberFinal = Number(prompt("Введите конечную точку (от 1 до 10)"));
+
+      if (
+        isNaN(numberStart) ||
+        isNaN(numberFinal) ||
+        numberStart > 10 ||
+        numberStart < 1 ||
+        numberFinal > 10 ||
+        numberFinal < 1
+      ) {
+        do {
+          alert("Введены некорректные данные. Введи число от 1 до 10");
+          numberStart = Number(prompt("Введите начальную точку (от 1 до 10)"));
+          numberFinal = Number(prompt("Введите конечную точку (от 1 до 10)"));
+        } while (
+          isNaN(numberStart) ||
+          isNaN(numberFinal) ||
+          numberStart > 10 ||
+          numberStart < 1 ||
+          numberFinal > 10 ||
+          numberFinal < 1
+        );
+      }
+
+      console.log(bfs(adjacencyList, numberStart, numberFinal));
+    </script>
+  </head>
+  <body>
+    <h1>
+      В неориентированном графе требуется найти минимальный путь между двумя
+      вершинами. Ввод номеров вершин осуществить с клавиатуры. В качестве
+      результата вывести сначала L – длину кратчайшего пути (количество ребер,
+      которые нужно пройти), а затем сам путь. Если пути нет, нужно вывести -1.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>01 июля 2022 года</p>
+  </body>
+</html>
