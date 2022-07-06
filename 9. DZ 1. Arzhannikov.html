@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ
+
+      class Worker {
+        constructor(name, surname, rate, days) {
+          this.name = name1;
+          this.surname = surname1;
+          this.rate = rate1;
+          this.days = days1;
+        }
+        getSalary() {
+          let salary = this.rate * this.days;
+          return salary;
+        }
+      }
+
+      name1 = "Mikhail";
+      surname1 = "Arzhannikov";
+      rate1 = 1875;
+      days1 = 16;
+
+      const human = new Worker();
+
+      console.log(human);
+      console.log("ЗП: " + human.getSalary());
+    </script>
+  </head>
+  <body>
+    <h1>
+      Реализуйте класс Worker (Работник), который будет иметь следующие
+      свойства:
+    </h1>
+    <h1>
+      name (имя), surname (фамилия), rate (ставка за день работы), days
+      (количество отработанных дней).
+    </h1>
+    <h1>
+      Также класс должен иметь метод getSalary(), который будет выводить
+      зарплату работника. Зарплата - это произведение (умножение) ставки rate на
+      количество отработанных дней days.
+    </h1>
+    <h1>Работа в браузере с JS</h1>
+    <p>07 июля 2022 года</p>
+  </body>
+</html>
