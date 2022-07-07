@@ -4,10 +4,10 @@
       // ВВОД ИСХОДНЫХ ДАННЫХ.
       class BankAccount {
         constructor(number, contributor, money, percentage) {
-          this.number = number1;
-          this.contributor = contributor1;
-          this.money = money1;
-          this.percentage = percentage1;
+          this.number = number;
+          this.contributor = contributor;
+          this.money = money;
+          this.percentage = percentage;
         }
         depositFunds() {
           this.money += giveMoney;
@@ -25,31 +25,91 @@
       money1 = 10000;
       percentage1 = 8;
 
+      number2 = "9654 9654 8524 1236";
+      contributor2 = "Ragnar Lothbrok";
+      money2 = 20000;
+      percentage2 = 12;
+
+      number3 = "8234 1158 9654 1200";
+      contributor3 = "Vladimir Monomah";
+      money3 = 5000;
+      percentage3 = 4;
+
       let giveMoney = Number(prompt("Сколько внести на счет?"));
 
-      const SberCard = new BankAccount();
+      let SberCard1 = new BankAccount(
+        number1,
+        contributor1,
+        money1,
+        percentage1
+      );
+      
+      let SberCard2 = new BankAccount(
+        number2,
+        contributor2,
+        money2,
+        percentage2
+      );
 
-      let BankAccountElement = [
-        SberCard.number,
-        SberCard.contributor,
-        SberCard.money,
-        SberCard.percentage,
-      ];
+      let SberCard3 = new BankAccount(
+        number3,
+        contributor3,
+        money3,
+        percentage3
+      );
+
+      let BankAccountElement = [SberCard1, SberCard2, SberCard3];
 
       console.log("Атрибуты класса «Банковский счёт»");
-      console.log(SberCard);
+      console.log(SberCard1);
       console.log(
-        "\nМы внесли на депозит " +
+        "\n" +
+          SberCard1.contributor +
+          ", мы внесли на депозит " +
           giveMoney +
           "р. Баланс: " +
-          SberCard.depositFunds() +
+          SberCard1.depositFunds() +
           "р."
       );
       console.log(
-        "\nНа ваш счет начислен годовой процент (" +
+        "На ваш счет начислен годовой процент (" +
           percentage1 +
           "%). Баланс: " +
-          SberCard.accrueInterest() +
+          SberCard1.accrueInterest() +
+          "р."
+      );
+
+      console.log(
+        "\n" +
+          SberCard2.contributor +
+          ", мы внесли на депозит " +
+          giveMoney +
+          "р. Баланс: " +
+          SberCard2.depositFunds() +
+          "р."
+      );
+      console.log(
+        "На ваш счет начислен годовой процент (" +
+          percentage2 +
+          "%). Баланс: " +
+          SberCard2.accrueInterest() +
+          "р."
+      );
+
+      console.log(
+        "\n" +
+          SberCard3.contributor +
+          ", мы внесли на депозит " +
+          giveMoney +
+          "р. Баланс: " +
+          SberCard3.depositFunds() +
+          "р."
+      );
+      console.log(
+        "На ваш счет начислен годовой процент (" +
+          percentage3 +
+          "%). Баланс: " +
+          SberCard3.accrueInterest() +
           "р."
       );
       console.log("\nМассив элементов класса «Банковский счёт»: ");
