@@ -1,18 +1,70 @@
 <html>
   <head>
     <script>
-      // ВВОД ИСХОДНЫХ ДАННЫХ
+      // ВВОД ИСХОДНЫХ ДАННЫХ.
+      class BankAccount {
+        constructor(number, contributor, money, percentage) {
+          this.number = number1;
+          this.contributor = contributor1;
+          this.money = money1;
+          this.percentage = percentage1;
+        }
+        depositFunds() {
+          this.money += giveMoney;
+          return this.money;
+        }
+
+        accrueInterest() {
+          this.money += (this.money / 100) * percentage1;
+          return this.money;
+        }
+      }
+
+      number1 = "8524 5258 9654 1236";
+      contributor1 = "Petr Perviy";
+      money1 = 10000;
+      percentage1 = 8;
+
+      let giveMoney = Number(prompt("Сколько внести на счет?"));
+
+      const SberCard = new BankAccount();
+
+      let BankAccountElement = [
+        SberCard.number,
+        SberCard.contributor,
+        SberCard.money,
+        SberCard.percentage,
+      ];
+
+      console.log("Атрибуты класса «Банковский счёт»");
+      console.log(SberCard);
+      console.log(
+        "\nМы внесли на депозит " +
+          giveMoney +
+          "р. Баланс: " +
+          SberCard.depositFunds() +
+          "р."
+      );
+      console.log(
+        "\nНа ваш счет начислен годовой процент (" +
+          percentage1 +
+          "%). Баланс: " +
+          SberCard.accrueInterest() +
+          "р."
+      );
+      console.log("\nМассив элементов класса «Банковский счёт»: ");
+      console.log(BankAccountElement);
     </script>
   </head>
   <body>
     <h1>Создайте класс "банковский счёт", который имеет следующие атрибуты:</h1>
-    <h1>номер;</h1>
-    <h1>вкладчик;</h1>
-    <h1>денежная сумма;</h1>
-    <h1>годовой процент.</h1>
+    <h1>1) номер;</h1>
+    <h1>2) вкладчик;</h1>
+    <h1>3) денежная сумма;</h1>
+    <h1>4) годовой процент.</h1>
     <h1>Добавьте методы осуществляющие следующие операции:</h1>
-    <h1>внести средства</h1>
-    <h1>начислить проценты</h1>
+    <h1>1) внести средства</h1>
+    <h1>2) начислить проценты</h1>
     <h1>Создайте массив элементов класса "банковский счёт"</h1>
     <h1>Работа в браузере с JS</h1>
     <p>07 июля 2022 года</p>
