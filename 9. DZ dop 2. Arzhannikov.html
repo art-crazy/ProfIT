@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ.
+
+      class Validator {
+        constructor() {}
+
+        isEmail(str) {
+          return str.indexOf("@") !== -1 && str.indexOf(".") !== -1;
+        }
+
+        isDomain(str) {
+          return str.indexOf(".com") !== -1 || str.indexOf(".ru") !== -1;
+        }
+
+        isDate(str) {
+          let date = str.match(/[0-9]{2}\.[0-9]{2}\.[0-9]{4}/);
+          if (date == null) {
+            return false;
+          } else return true;
+        }
+
+        isPhone(str) {
+          let phone = str.match(
+            /\+7\ \([0-9]{3}\)\ [0-9]{3}-[0-9]{2}-[0-9]{2}/
+          );
+          if (phone == null) {
+            return false;
+          } else return true;
+        }
+
+        // isPhone(str) {
+        //   let phone = str.match(
+        //     /\+7\ \([0-9]{3}\)\ [0-9]{2}-[0-9]{2}-[0-9]{3}/
+        //   );
+
+        //   return phone == null ? false : true;
+        // }
+      }
+
+      let validator = new Validator();
+
+      console.log(validator.isEmail("arzhannikov.ma@gmail.com"));
+      console.log(validator.isDomain("yandex.ru"));
+      console.log(validator.isDate("09.07.2022"));
+      console.log(validator.isPhone("+7 (950) 575-48-28"));
+    </script>
+  </head>
+  <body>
+    <h1>Реализуйте класс Validator, который будет проверять строки.</h1>
+    <h1>
+      К примеру, у него будет метод isEmail c параметром, который принимает
+      строку и проверяет, является ли она корректной для адреса электронной
+      почты.
+    </h1>
+    <h1>Если является - возвращает true, если не является - то false.</h1>
+    <h1>Кроме того, класс будет иметь следующие методы:</h1>
+    <h1>метод isDomain для проверки домена,</h1>
+    <h1>метод isDate для проверки даты</h1>
+    <h1>и метод isPhone для проверки телефона.</h1>
+    <p>07 июля 2022 года</p>
+  </body>
+</html>
