@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ.
+
+      let summCode = 0;
+      let count = 1;
+      number = Number(
+        prompt("Введи цифру, которая будет обозначать систему счисления")
+      );
+      randomSymbol = [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+      ];
+
+      // --
+      function calcHashQwerty() {
+        let summCodeQwerty = 0;
+        for (let i = 0; i < "qwerty".length; i++) {
+          summCodeQwerty += Number("qwerty".charCodeAt(i));
+        }
+
+        hashQwerty = (summCodeQwerty % 256).toString(number);
+
+        console.log("Пароль: " + "qwerty");
+        console.log("Система счисления: " + number);
+        console.log("Хеш код qwerty: " + hashQwerty);
+        return hashQwerty;
+      }
+
+      hashQw = calcHashQwerty();
+      console.log("");
+      console.log(
+        "Список паролей, хеш которых совпадет с хешем пароля <qwerty>"
+      );
+      // --
+
+      for (let i = 0; i < randomSymbol.length; i++) {
+        for (let j = 1; j < randomSymbol.length; j++) {
+          summCode =
+            Number(randomSymbol[i].charCodeAt(0)) +
+            Number(randomSymbol[j].charCodeAt(0));
+          hash = (summCode % 256).toString(number);
+
+          if (hash == hashQw) {
+            console.log(
+              "Пароль №" + count + ": " + randomSymbol[i] + randomSymbol[j]
+            );
+            count++;
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>
+      Дополните созданный ранее скрипт программным кодом, который позволит путем
+      прямого перебора подобрать другой пароль, имеющий такой же хэшкод, что и
+      пароль qwerty. Пароль считать состоящим только из десятичных цифр,
+      строчных и прописных букв латинского алфавита. Ограничимся паролями,
+      состоящими лишь из двух символов
+    </h1>
+    <p>14 июля 2022 года</p>
+  </body>
+</html>

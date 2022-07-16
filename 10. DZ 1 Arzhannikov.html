@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ.
+
+      // function calcHash(numberSystem) {
+      //   async function digestMessage(message) {
+      //     const msgUint8 = new TextEncoder().encode(message);
+      //     const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
+      //     const hashArray = Array.from(new Uint8Array(hashBuffer));
+      //     const hashHex = hashArray
+      //       .map((b) => b.toString(numberSystem).padStart(2, "0"))
+      //       .join("");
+      //     return hashHex;
+      //   }
+      //   digestMessage("Я люблю язык JavaScript!").then((digestHex) => console.log(digestHex));
+      // }
+
+      text = String(
+        prompt(
+          "Введи произвольную строку символов, из которой вычислим значение хэш-функции"
+        )
+      );
+      number = Number(
+        prompt("Введи цифру, которая будет обозначать систему счисления")
+      );
+
+      let summCode = 0;
+
+      for (let i = 0; i < text.length; i++) {
+        summCode += Number(text.charCodeAt(i));
+      }
+
+      function mod256(summCode) {
+        return summCode % 256;
+      }
+
+      function hash(number) {
+        return mod256(summCode).toString(number);
+      }
+
+      console.log("Пароль: " + text);
+      console.log("Система счисления: " + number);
+      console.log("Хеш код: " + hash(number));
+    </script>
+  </head>
+  <body>
+    <h1>
+      Для хранения паролей используется хэш-функция: (charCode(C1) +charCode(C2)
+      +..... +charCode(Cn) ) mod 256. Создайте скрипт, который будет содержать
+      JavaScript-функцию, способную вычислять для произвольной строки символов
+      значение этой хэш-функции в любой системе счисления в зависимости от
+      передаваемого в функцию параметра
+    </h1>
+    <p>14 июля 2022 года</p>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ.
+
+      number = 16;
+
+      function calcHashQwerty() {
+        let summCodeQwerty = 0;
+        for (let i = 0; i < "qwerty".length; i++) {
+          summCodeQwerty += Number("qwerty".charCodeAt(i));
+        }
+
+        hashQwerty = (summCodeQwerty % 256).toString(number);
+
+        console.log("Пароль: " + "qwerty");
+        console.log("Система счисления: " + number);
+        console.log("Хеш код: " + hashQwerty);
+      }
+
+      calcHashQwerty();
+    </script>
+  </head>
+  <body>
+    <h1>
+      Дополните созданный ранее скрипт программным кодом для вычисления 
+      хэш-кода пароля qwerty в шестнадцатиричном виде с помощью созданной 
+      в ходе выполнения предыдущей задачи функции.
+    </h1>
+    <p>14 июля 2022 года</p>
+  </body>
+</html>
