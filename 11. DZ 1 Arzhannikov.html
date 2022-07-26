@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ.
+
+      let max = 3;
+
+      class LRU {
+        constructor(max) {
+          this.max = max;
+          this.cache = [];
+        }
+
+        get(key) {
+          if (this.cache.length != 0) {
+            for (let i = 0; i < this.cache.length; i++) {
+              if (this.cache[i][0] == key) {
+                let result = this.cache[i][1];
+                if (i != 0) {
+                  this.cache.splice(i, 1);
+                  this.cache.unshift([result]);
+                }
+                return result;
+              }
+            }
+          }
+          return this.set(key);
+        }
+
+        set(key) {
+          let value = calculateSum(key);
+          this.cache.unshift([value]);
+          if (this.cache.length > this.max) {
+            this.cache.pop();
+          }
+          return value;
+        }
+      }
+
+      function calculateSum(number) {
+        let sum = 0;
+        for (let i = 0; i < number; i++) {
+          sum += i;
+        }
+
+        return sum;
+      }
+
+      let obj = new LRU(max);
+
+      while (true) {
+        if (isNaN(max)) break;
+        let inputNumber = Number(
+          prompt(
+            "Введите число для вычисления (Нажми <Отмена> для остановки задачи):"
+          )
+        );
+
+        if (!inputNumber) break;
+
+        resCalc = obj.get(inputNumber);
+
+        alert("Результат вычисления: " + resCalc);
+        console.log("\nВведено число: " + inputNumber);
+        console.log("Результат вычисления: " + resCalc);
+        console.log("Кэш: " + obj.cache);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>
+      Создайте класс для реализации кэширования результатов вычисления функции
+      calculateSum, код которой приведен в материалах к занятию в файле
+      cache.js.
+    </h1>
+    <h1>
+      В качестве алгоритма кэширования выберите LRU. Для реализации кэша
+      используйте класс Array. (массив)
+    </h1>
+    <p>23 июля 2022 года</p>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="cities.js"></script>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ.
+
+      class HashTable {
+        constructor() {
+          this.hashTable = [];
+          for (let i = 0; i < 8192; i++) {
+            this.hashTable[i] = [];
+          }
+        }
+
+        hashFunction(city) {
+          let uniCode = 0;
+
+          for (let i = 0; i < city.length; i++) {
+            let code = city.charCodeAt(i);
+            uniCode += code;
+          }
+          return (uniCode % 8192).toString(10);
+        }
+
+        put(city) {
+          let hashCity = this.hashFunction(city);
+          let index = this.search(city);
+          if (index == -1) {
+            this.hashTable[hashCity].push(city);
+          }
+        }
+
+        search(desiredValue) {
+          let hashDesiredValue = this.hashFunction(desiredValue);
+          if (this.hashTable[hashDesiredValue].length > 0) {
+            for (let i in this.hashTable[hashDesiredValue]) {
+              if (this.hashTable[hashDesiredValue][i] == desiredValue) {
+                return i;
+              }
+            }
+          }
+          return -1;
+        }
+
+        searchCity(desiredСity) {
+          let message;
+          let hashВesiredСity = this.hashFunction(desiredСity);
+          let result = this.search(desiredСity);
+          if (result != -1) {
+            message =
+              "Город " +
+              desiredСity +
+              " в хэш таблице есть, хэш: " +
+              hashВesiredСity;
+          } else {
+            message =
+              "Города " +
+              desiredСity +
+              " с хэшем " +
+              hashВesiredСity +
+              " в таблице нет";
+          }
+          return message;
+        }
+
+        deleteCity(valueToDelete) {
+          let message;
+          let hashValueToDelete = this.hashFunction(valueToDelete);
+          let result = this.search(valueToDelete);
+          if (result != -1) {
+            this.hashTable[hashValueToDelete].splice(result, 1);
+            message =
+              "Город " +
+              valueToDelete +
+              " с хэшем " +
+              hashValueToDelete +
+              " удален из таблицы";
+          } else {
+            message = "Города нет. Не удален";
+          }
+          return message;
+        }
+      }
+
+      let hashTableCity = new HashTable();
+
+      for (let i = 0; i < citiesFile.length; i++) {
+        hashTableCity.put(citiesFile[i]);
+      }
+
+      console.log(hashTableCity);
+
+      do {
+        option = Number(
+          prompt(
+            "Что делаем? 1 - Поиск города. 2 - добавление города. 3 - удаление города. Для выхода из программы нажми иной символ"
+          )
+        );
+
+        switch (option) {
+          case 1:
+            inputSearchCity = String(prompt("Какой город ищем?"));
+            console.log(hashTableCity.searchCity(inputSearchCity));
+            alert(hashTableCity.searchCity(inputSearchCity));
+            break;
+
+          case 2:
+            inputPutCity = String(prompt("Какой город добавляем?"));
+            hashTableCity.put(inputPutCity);
+            console.log("\nДобавлен город " + inputPutCity);
+            alert("Добавлен город " + inputPutCity);
+            break;
+
+          case 3:
+            inputDeleteCity = String(prompt("Какой город удаляем?"));
+            console.log(hashTableCity.deleteCity(inputDeleteCity));
+            console.log("\nУдален город " + inputDeleteCity);
+            alert("Удален город " + inputDeleteCity);
+            break;
+        }
+      } while (option == 1 || option == 2 || option == 3);
+
+      if (option !== 1 || option !== 2 || option !== 3) {
+        console.log("\nПрограмма завершена.");
+      }
+    </script>
+  </head>
+  <body>
+    <h1>
+      Создайте класс на языке JavaScript, который будет реализовывать структуру
+      данных «хэш-таблица» на основе класса Array.
+    </h1>
+    <h1>Класс должен содержать методы для:</h1>
+    <h1>- добавления;</h1>
+    <h1>- удаления;</h1>
+    <h1>- поиска элементов.</h1>
+    <h1>Для разрешения коллизий используйте метод цепочек.</h1>
+    <h1>
+      Работу скрипта протестируйте на массиве названий городов мира, имеющемся в
+      дополнительных материалах к занятию в файле cities.js.
+    </h1>
+    <h1>
+      В качестве ключа используйте хэш названия города, в качестве значения –
+      само название города.
+    </h1>
+    <h1>
+      Для вычисления хэша используйте следующую хэш-функцию: ( charCode(C1)+
+      charCode(C2) + ... + charCode(C3) ) mod x, где x – длина массива, лежащего
+      в основе хэш-таблицы, Ci – буквы названия города,
+    </h1>
+    <h1>
+      а хэш вычисляется в десятичной системе счисления. Используйте значение x =
+      8192.
+    </h1>
+    <p>23 июля 2022 года</p>
+  </body>
+</html>

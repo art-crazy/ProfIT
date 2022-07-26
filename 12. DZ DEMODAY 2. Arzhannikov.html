@@ -1,0 +1,221 @@
+<html>
+  <head>
+    <script>
+      // ВВОД ИСХОДНЫХ ДАННЫХ.
+
+      const maxRait = 500000;
+
+      // Вычисляем время за которое велосипедись проедет этап в 4км. Результаты спортсмена рассчитываются рандомно с умножением на коэф спортсмена
+      function randomTimeStep(coefficient) {
+        result =
+          Math.floor(Math.random() * (230 - 150) + 150) *
+          (coefficient / maxRait);
+        return result;
+      }
+
+      class sportsmanCreator {
+        constructor(number, surname, name, rating) {
+          this.number = number;
+          this.surname = surname;
+          this.name = name;
+          this.rating = rating;
+        }
+      }
+
+      let bicyclistDE1 = new sportsmanCreator(
+        (number = 1),
+        (surname = "Glockner1"),
+        (name = "Michael1"),
+        (rating = 408791)
+      );
+
+      // console.log("number.bicyclistDE1 // " + bicyclistDE1.surname);
+
+      let bicyclistDE2 = new sportsmanCreator(
+        (number = 2),
+        (surname = "Glockner2"),
+        (name = "Michael2"),
+        (rating = 408792)
+      );
+
+      let bicyclistDE3 = new sportsmanCreator(
+        (number = 3),
+        (surname = "Glockner3"),
+        (name = "Michael3"),
+        (rating = 408793)
+      );
+
+      let bicyclistDE4 = new sportsmanCreator(
+        (number = 4),
+        (surname = "Glockner4"),
+        (name = "Michael4"),
+        (rating = 408794)
+      );
+
+      // Страна 2
+
+      let bicyclistFR1 = new sportsmanCreator(
+        (number = 1),
+        (surname = "Glockner5"),
+        (name = "Michael5"),
+        (rating = 408795)
+      );
+
+      let bicyclistFR2 = new sportsmanCreator(
+        (number = 2),
+        (surname = "Glockner6"),
+        (name = "Michael6"),
+        (rating = 408796)
+      );
+
+      let bicyclistFR3 = new sportsmanCreator(
+        (number = 3),
+        (surname = "Glockner7"),
+        (name = "Michael7"),
+        (rating = 408797)
+      );
+
+      let bicyclistFR4 = new sportsmanCreator(
+        (number = 4),
+        (surname = "Glockner8"),
+        (name = "Michael8"),
+        (rating = 408798)
+      );
+
+      // Страна 3
+
+      let bicyclistXX1 = new sportsmanCreator(
+        (number = 1),
+        (surname = "Glockner9"),
+        (name = "Michael9"),
+        (rating = 408799)
+      );
+
+      let bicyclistXX2 = new sportsmanCreator(
+        (number = 2),
+        (surname = "Glockner10"),
+        (name = "Michael10"),
+        (rating = 408710)
+      );
+
+      let bicyclistXX3 = new sportsmanCreator(
+        (number = 3),
+        (surname = "Glockner11"),
+        (name = "Michael11"),
+        (rating = 408711)
+      );
+
+      let bicyclistXX4 = new sportsmanCreator(
+        (number = 4),
+        (surname = "Glockner12"),
+        (name = "Michael12"),
+        (rating = 408721)
+      );
+
+      // Страна 4
+
+      let bicyclistYY1 = new sportsmanCreator(
+        (number = 1),
+        (surname = "Glockner13"),
+        (name = "Michael13"),
+        (rating = 408731)
+      );
+
+      let bicyclistYY2 = new sportsmanCreator(
+        (number = 2),
+        (surname = "Glockner14"),
+        (name = "Michael14"),
+        (rating = 408741)
+      );
+
+      let bicyclistYY3 = new sportsmanCreator(
+        (number = 3),
+        (surname = "Glockner15"),
+        (name = "Michael15"),
+        (rating = 408751)
+      );
+
+      let bicyclistYY4 = new sportsmanCreator(
+        (number = 4),
+        (surname = "Glockner16"),
+        (name = "Michael16"),
+        (rating = 408761)
+      );
+
+      alert = "Добро пожаловать на Олимийские Игры 2035!";
+      alert = "Сейчас состоится круг №1";
+      let stepOneRound = Number("Введи кличество этапов первого круга");
+      let stepTwoRound = 2;
+
+      allBicyclist = [
+        bicyclistDE1,
+        bicyclistDE2,
+        bicyclistDE3,
+        bicyclistDE4,
+        bicyclistFR1,
+        bicyclistFR2,
+        bicyclistFR3,
+        bicyclistFR4,
+        bicyclistXX1,
+        bicyclistXX2,
+        bicyclistXX3,
+        bicyclistXX4,
+        bicyclistYY1,
+        bicyclistYY2,
+        bicyclistYY3,
+        bicyclistYY4,
+      ];
+
+      console.log("allBicyclist");
+      console.log(allBicyclist);
+      console.log("");
+
+      console.log("allBicyclist[0]");
+      console.log(allBicyclist[surname]);
+      console.log("");
+      console.log("allBicyclist.bicyclistDE4.name");
+      console.log(bicyclistDE4.name);
+      // РЕАЛИЗОВАТЬ ПОДСЧЕТ РЕЗУЛЬТАТА В ЗАВИСИМОСТИ ОТ РЕЙТИНГА
+    </script>
+  </head>
+  <body>
+    <h1>
+      В соревновании по велоспорту участвуют по 4 гонщика из каждой страны. О
+      каждом гонщике известны следующие данные:
+    </h1>
+    <h1>номер,</h1>
+    <h1>фамилия,</h1>
+    <h1>имя,</h1>
+    <h1>рейтинг.</h1>
+    <h1>Соревнование проходит в два круга. Первый круг состоит из N этапов.</h1>
+    <h1>
+      Место страны на этапе определяется по времени худшего (занявшего четвертое
+      место) гонщика этой страны на рассматриваемом этапе.
+    </h1>
+    <h1>
+      Место страны в итоговом протоколе первого круга определяется по наименьшей
+      сумме мест, занятых страной на этапах, а при равенстве этого показателя –
+      по более высокому месту в итоговом протоколе (в личном зачёте) лучших
+      гонщиков конкурирующих стран.
+    </h1>
+    <h1>Во второй круг проходит 4 страны имеющие лучший результат.</h1>
+    <h1>Второй круг проходит в два этапа.</h1>
+    <h1>
+      Место страны на этапе определяется по времени лучшего (занявшего первое
+      место) гонщика этой страны на рассматриваемом этапе. Место страны в
+      итоговом протоколе второго круга определяется по наименьшей сумме мест,
+      занятых страной на этапах, а при равенстве этого показателя – по средне
+      арифметическому значению рейтинга всех гонщиков страны.
+    </h1>
+    <h1>
+      Примечание: После проведения первого круга соревнований, должен быть
+      выведен итоговый протокол по гонщикам и по странам.
+    </h1>
+    <h1>Для проведения второго круга требуется подтверждение пользователя.</h1>
+    <h1>
+      Затем выводится итоговый протокол по второму кругу и отдельно сообщение о
+      стране-победителе соревнований.
+    </h1>
+    <p>23 июля 2022 года</p>
+  </body>
+</html>
