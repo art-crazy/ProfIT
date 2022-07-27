@@ -4,178 +4,431 @@
       // ВВОД ИСХОДНЫХ ДАННЫХ.
 
       const maxRait = 500000;
-
-      // Вычисляем время за которое велосипедись проедет этап в 4км. Результаты спортсмена рассчитываются рандомно с умножением на коэф спортсмена
-      function randomTimeStep(coefficient) {
-        result =
-          Math.floor(Math.random() * (230 - 150) + 150) *
-          (coefficient / maxRait);
-        return result;
-      }
+      console.log("Добро пожаловать на Олимийские Игры 2035!");
+      let stepOneRound = Number(prompt("Введи кличество этапов первого круга"));
 
       class sportsmanCreator {
-        constructor(number, surname, name, rating) {
+        constructor(
+          number,
+          surname,
+          name,
+          rating,
+          summMinTimeOneRound,
+          country
+        ) {
           this.number = number;
           this.surname = surname;
           this.name = name;
           this.rating = rating;
+          this.summMinTimeOneRound = summMinTimeOneRound;
+          this.country = country;
         }
       }
 
+      function countryCalcTimeTwoPart(countryArray, countryName, k) {
+        console.log("");
+        console.log("Страна: " + countryName);
+        let timing = [];
+        for (let j = 0; j < countryArray.length; j++) {
+          timing[j] = time(countryArray[k]);
+          console.log(
+            "Спортсмен: " +
+              countryArray[j].name +
+              " " +
+              countryArray[j].surname +
+              ". Результат этапа №" +
+              (k + 1) +
+              ": " +
+              timing[j]
+          );
+        }
+
+        let minTime = Math.min(...timing);
+        console.log("Лучший результат: " + minTime);
+        return minTime;
+      }
+
+      function countryCalcTime(countryArray, countryName, k) {
+        console.log("");
+        console.log("Страна: " + countryName);
+        let timing = [];
+
+        for (let j = 0; j < countryArray.length; j++) {
+          timing[j] = time(countryArray[j].rating);
+
+          console.log(
+            "Спортсмен: " +
+              countryArray[j].name +
+              " " +
+              countryArray[j].surname +
+              ". Результат этапа №" +
+              (k + 1) +
+              ": " +
+              timing[j]
+          );
+        }
+
+        let maxTime = Math.max(...timing);
+        console.log("Худший результат: " + maxTime);
+
+        return maxTime;
+      }
+
+      function countryPlaceTwoPart(k) {
+        DE = countryCalcTimeTwoPart(
+          arrBicyclistDE,
+          arrBicyclistDE[0].country,
+          k
+        );
+
+        FR = countryCalcTimeTwoPart(
+          arrBicyclistFR,
+          arrBicyclistFR[0].country,
+          k
+        );
+
+        UK = countryCalcTimeTwoPart(
+          arrBicyclistUK,
+          arrBicyclistUK[0].country,
+          k
+        );
+
+        BY = countryCalcTimeTwoPart(
+          arrBicyclistBY,
+          arrBicyclistBY[0].country,
+          k
+        );
+
+        let countries = [DE, FR, UK, BY];
+
+        console.log("");
+        console.log("Результат этапа №" + (k + 1) + " второго круга:");
+
+        countries.sort(function (a, b) {
+          return a - b;
+        });
+
+        // Вывод результата этапа
+        for (let k = 0; k < countries.length; k++) {
+          if (countries[k] == DE) {
+            console.log(k + 1 + " место - DE");
+          } else if (countries[k] == FR) {
+            console.log(k + 1 + " место - FR");
+          } else if (countries[k] == UK) {
+            console.log(k + 1 + " место - UK");
+          } else if (countries[k] == BY) {
+            console.log(k + 1 + " место - BY");
+          }
+        }
+      }
+
+      function countryPlace(k) {
+        DE = countryCalcTime(arrBicyclistDE, arrBicyclistDE[0].country, k);
+        FR = countryCalcTime(arrBicyclistFR, arrBicyclistFR[0].country, k);
+        UK = countryCalcTime(arrBicyclistUK, arrBicyclistUK[0].country, k);
+        BY = countryCalcTime(arrBicyclistBY, arrBicyclistBY[0].country, k);
+
+        let countries = [DE, FR, UK, BY];
+
+        console.log("");
+        console.log("Результат этапа №" + (k + 1) + " первого круга:");
+
+        countries.sort(function (a, b) {
+          return a - b;
+        });
+
+        // Вывод результата 1 круга
+
+        for (let k = 0; k < countries.length; k++) {
+          if (countries[k] == DE) {
+            console.log(k + 1 + " место - DE");
+          } else if (countries[k] == FR) {
+            console.log(k + 1 + " место - FR");
+          } else if (countries[k] == UK) {
+            console.log(k + 1 + " место - UK");
+          } else if (countries[k] == BY) {
+            console.log(k + 1 + " место - BY");
+          }
+        }
+      }
+
+      function time(coefficient) {
+        let time = 0;
+
+        for (let i = 0; i < stepOneRound; i++) {
+          time += Math.random() * 5 * (500000 / maxRait);
+          time = Math.round(time * 100) / 100;
+        }
+
+        return time;
+      }
+
+      function TimingAndSum(countryArray) {
+        let timing = [];
+
+        for (let i = 0; i < countryArray.length; i++) {
+          timing[i] = time(countryArray[i].rating);
+        }
+
+        let sum = 0;
+
+        for (let i = 0; i < timing.length; i++) {
+          sum += timing[i];
+        }
+
+        console.log("Сумма времени " + sum);
+
+        return sum;
+      }
+
+      // Германия
+
       let bicyclistDE1 = new sportsmanCreator(
-        (number = 1),
-        (surname = "Glockner1"),
-        (name = "Michael1"),
-        (rating = 408791)
+        1,
+        "Tadej",
+        "Pogacar",
+        291216,
+        0,
+        "DE"
       );
 
-      // console.log("number.bicyclistDE1 // " + bicyclistDE1.surname);
-
       let bicyclistDE2 = new sportsmanCreator(
-        (number = 2),
-        (surname = "Glockner2"),
-        (name = "Michael2"),
-        (rating = 408792)
+        2,
+        "Glockner",
+        "Michael",
+        339867,
+        0,
+        "DE"
       );
 
       let bicyclistDE3 = new sportsmanCreator(
-        (number = 3),
-        (surname = "Glockner3"),
-        (name = "Michael3"),
-        (rating = 408793)
+        3,
+        "Mikkel",
+        "Bjerg",
+        282563,
+        0,
+        "DE"
       );
 
       let bicyclistDE4 = new sportsmanCreator(
-        (number = 4),
-        (surname = "Glockner4"),
-        (name = "Michael4"),
-        (rating = 408794)
+        4,
+        "Glockner4",
+        "Michael4",
+        171370,
+        0,
+        "DE"
       );
 
-      // Страна 2
+      // Франция
 
       let bicyclistFR1 = new sportsmanCreator(
-        (number = 1),
-        (surname = "Glockner5"),
-        (name = "Michael5"),
-        (rating = 408795)
+        1,
+        "Rafal",
+        "Majka",
+        154498,
+        0,
+        "FR"
       );
 
       let bicyclistFR2 = new sportsmanCreator(
-        (number = 2),
-        (surname = "Glockner6"),
-        (name = "Michael6"),
-        (rating = 408796)
+        2,
+        "Steven",
+        "Kruijswijk",
+        223522,
+        0,
+        "FR"
       );
 
       let bicyclistFR3 = new sportsmanCreator(
-        (number = 3),
-        (surname = "Glockner7"),
-        (name = "Michael7"),
-        (rating = 408797)
+        3,
+        "Glockner7",
+        "Michael7",
+        166192,
+        0,
+        "FR"
       );
 
       let bicyclistFR4 = new sportsmanCreator(
-        (number = 4),
-        (surname = "Glockner8"),
-        (name = "Michael8"),
-        (rating = 408798)
+        4,
+        "Sepp",
+        "Kuss",
+        222544,
+        0,
+        "FR"
       );
 
-      // Страна 3
+      // Англия
 
-      let bicyclistXX1 = new sportsmanCreator(
-        (number = 1),
-        (surname = "Glockner9"),
-        (name = "Michael9"),
-        (rating = 408799)
+      let bicyclistUK1 = new sportsmanCreator(
+        1,
+        "Daniel",
+        "Felipe",
+        327516,
+        0,
+        "UK"
       );
 
-      let bicyclistXX2 = new sportsmanCreator(
-        (number = 2),
-        (surname = "Glockner10"),
-        (name = "Michael10"),
-        (rating = 408710)
+      let bicyclistUK2 = new sportsmanCreator(
+        2,
+        "Mikael",
+        "Cherel",
+        116927,
+        0,
+        "UK"
       );
 
-      let bicyclistXX3 = new sportsmanCreator(
-        (number = 3),
-        (surname = "Glockner11"),
-        (name = "Michael11"),
-        (rating = 408711)
+      let bicyclistUK3 = new sportsmanCreator(
+        3,
+        "Benoit",
+        "Cosnefroy",
+        342436,
+        0,
+        "UK"
       );
 
-      let bicyclistXX4 = new sportsmanCreator(
-        (number = 4),
-        (surname = "Glockner12"),
-        (name = "Michael12"),
-        (rating = 408721)
+      let bicyclistUK4 = new sportsmanCreator(
+        4,
+        "Aurelien",
+        "Paret",
+        209631,
+        0,
+        "UK"
       );
 
-      // Страна 4
+      // Белоруссия
 
-      let bicyclistYY1 = new sportsmanCreator(
-        (number = 1),
-        (surname = "Glockner13"),
-        (name = "Michael13"),
-        (rating = 408731)
+      let bicyclistBY1 = new sportsmanCreator(
+        1,
+        "Felix",
+        "Grobschartner",
+        66427,
+        0,
+        "BY"
       );
 
-      let bicyclistYY2 = new sportsmanCreator(
-        (number = 2),
-        (surname = "Glockner14"),
-        (name = "Michael14"),
-        (rating = 408741)
+      let bicyclistBY2 = new sportsmanCreator(
+        2,
+        "Marco",
+        "Haller",
+        96105,
+        0,
+        "BY"
       );
 
-      let bicyclistYY3 = new sportsmanCreator(
-        (number = 3),
-        (surname = "Glockner15"),
-        (name = "Michael15"),
-        (rating = 408751)
+      let bicyclistBY3 = new sportsmanCreator(
+        3,
+        "Lennard",
+        "Kamna",
+        178829,
+        0,
+        "BY"
       );
 
-      let bicyclistYY4 = new sportsmanCreator(
-        (number = 4),
-        (surname = "Glockner16"),
-        (name = "Michael16"),
-        (rating = 408761)
+      let bicyclistBY4 = new sportsmanCreator(
+        4,
+        "Maximilian",
+        "Schachmann",
+        172144,
+        0,
+        "BY"
       );
 
-      alert = "Добро пожаловать на Олимийские Игры 2035!";
-      alert = "Сейчас состоится круг №1";
-      let stepOneRound = Number("Введи кличество этапов первого круга");
-      let stepTwoRound = 2;
-
-      allBicyclist = [
+      let arrBicyclistDE = [
         bicyclistDE1,
         bicyclistDE2,
         bicyclistDE3,
         bicyclistDE4,
+      ];
+
+      let arrBicyclistFR = [
         bicyclistFR1,
         bicyclistFR2,
         bicyclistFR3,
         bicyclistFR4,
-        bicyclistXX1,
-        bicyclistXX2,
-        bicyclistXX3,
-        bicyclistXX4,
-        bicyclistYY1,
-        bicyclistYY2,
-        bicyclistYY3,
-        bicyclistYY4,
       ];
 
-      console.log("allBicyclist");
-      console.log(allBicyclist);
-      console.log("");
+      let arrBicyclistUK = [
+        bicyclistUK1,
+        bicyclistUK2,
+        bicyclistUK3,
+        bicyclistUK4,
+      ];
 
-      console.log("allBicyclist[0]");
-      console.log(allBicyclist[surname]);
+      let arrBicyclistBY = [
+        bicyclistBY1,
+        bicyclistBY2,
+        bicyclistBY3,
+        bicyclistBY4,
+      ];
+
+      console.log("Круг №1");
+
+      for (let i = 0; i < stepOneRound; i++) {
+        countryPlace(i);
+      }
+
+      DE = TimingAndSum(arrBicyclistDE);
+      FR = TimingAndSum(arrBicyclistFR);
+      UK = TimingAndSum(arrBicyclistUK);
+      BY = TimingAndSum(arrBicyclistBY);
+
+      let countries = [DE, FR, UK, BY];
+
+      countries.sort(function (a, b) {
+        return b - a;
+      });
+
       console.log("");
-      console.log("allBicyclist.bicyclistDE4.name");
-      console.log(bicyclistDE4.name);
-      // РЕАЛИЗОВАТЬ ПОДСЧЕТ РЕЗУЛЬТАТА В ЗАВИСИМОСТИ ОТ РЕЙТИНГА
+      console.log("Итоги первого круга:");
+
+      for (let i = 0; i < countries.length; i++) {
+        if (countries[i] == DE) {
+          console.log(i + 1 + " место - DE");
+        } else if (countries[i] == FR) {
+          console.log(i + 1 + " место - FR");
+        } else if (countries[i] == UK) {
+          console.log(i + 1 + " место - UK");
+        } else if (countries[i] == BY) {
+          console.log(i + 1 + " место - BY");
+        }
+      }
+
+      // ВТОРОЙ КРУГ
+
+      alert("Жамкни <OK>, чтобы начать второй этап");
+
+      console.log("Круг №2");
+
+      for (let i = 0; i < 2; i++) {
+        countryPlaceTwoPart(i);
+      }
+
+      DE = TimingAndSum(arrBicyclistDE);
+      FR = TimingAndSum(arrBicyclistFR);
+      UK = TimingAndSum(arrBicyclistUK);
+      BY = TimingAndSum(arrBicyclistBY);
+
+      countries = [DE, FR, UK, BY];
+
+      countries.sort(function (a, b) {
+        return b - a;
+      });
+
+      console.log("");
+      console.log("Итоги второго круга:");
+
+      // Вывод результата 2 круга
+      for (let i = 0; i < countries.length; i++) {
+        if (countries[i] == DE) {
+          console.log(i + 1 + " место - DE");
+        } else if (countries[i] == FR) {
+          console.log(i + 1 + " место - FR");
+        } else if (countries[i] == UK) {
+          console.log(i + 1 + " место - UK");
+        } else if (countries[i] == BY) {
+          console.log(i + 1 + " место - BY");
+        }
+      }
     </script>
   </head>
   <body>
@@ -190,7 +443,7 @@
     <h1>Соревнование проходит в два круга. Первый круг состоит из N этапов.</h1>
     <h1>
       Место страны на этапе определяется по времени худшего (занявшего четвертое
-      место) гонщика этой страны на рассматриваемом этапе.
+      место) гонщика этой страны на рассматриваемом этапе. --
     </h1>
     <h1>
       Место страны в итоговом протоколе первого круга определяется по наименьшей
