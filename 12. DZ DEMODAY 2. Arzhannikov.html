@@ -4,8 +4,42 @@
       // ВВОД ИСХОДНЫХ ДАННЫХ.
 
       const maxRait = 500000;
-      console.log("Добро пожаловать на Олимийские Игры 2035!");
-      let stepOneRound = Number(prompt("Введи кличество этапов первого круга"));
+      alert("Добро пожаловать на Олимийские Игры 2035!");
+      let stepOneRound = Number(
+        prompt("Введи кличество этапов первого круга (не более 10)")
+      );
+
+      if (
+        stepOneRound !== 1 &&
+        stepOneRound !== 2 &&
+        stepOneRound !== 3 &&
+        stepOneRound !== 4 &&
+        stepOneRound !== 5 &&
+        stepOneRound !== 6 &&
+        stepOneRound !== 7 &&
+        stepOneRound !== 8 &&
+        stepOneRound !== 9 &&
+        stepOneRound !== 10
+      ) {
+        do
+          stepOneRound = Number(
+            prompt(
+              "Введены некорректные данные. Введи кличество этапов первого круга (не более 10)"
+            )
+          );
+        while (
+          stepOneRound !== 1 &&
+          stepOneRound !== 2 &&
+          stepOneRound !== 3 &&
+          stepOneRound !== 4 &&
+          stepOneRound !== 5 &&
+          stepOneRound !== 6 &&
+          stepOneRound !== 7 &&
+          stepOneRound !== 8 &&
+          stepOneRound !== 9 &&
+          stepOneRound !== 10
+        );
+      }
 
       class sportsmanCreator {
         constructor(
@@ -29,8 +63,10 @@
         console.log("");
         console.log("Страна: " + countryName);
         let timing = [];
+
         for (let j = 0; j < countryArray.length; j++) {
-          timing[j] = time(countryArray[k]);
+          timing[j] = time(countryArray[j].rating);
+
           console.log(
             "Спортсмен: " +
               countryArray[j].name +
@@ -39,12 +75,13 @@
               ". Результат этапа №" +
               (k + 1) +
               ": " +
-              timing[j]
+              timing[j] +
+              "сек."
           );
         }
 
         let minTime = Math.min(...timing);
-        console.log("Лучший результат: " + minTime);
+        console.log("Лучший результат: " + minTime + "сек.");
         return minTime;
       }
 
@@ -64,12 +101,13 @@
               ". Результат этапа №" +
               (k + 1) +
               ": " +
-              timing[j]
+              timing[j] +
+              "сек."
           );
         }
 
         let maxTime = Math.max(...timing);
-        console.log("Худший результат: " + maxTime);
+        console.log("Худший результат: " + maxTime + "сек.");
 
         return maxTime;
       }
@@ -111,13 +149,13 @@
         // Вывод результата этапа
         for (let k = 0; k < countries.length; k++) {
           if (countries[k] == DE) {
-            console.log(k + 1 + " место - DE");
+            console.log(k + 1 + " место - Германия");
           } else if (countries[k] == FR) {
-            console.log(k + 1 + " место - FR");
+            console.log(k + 1 + " место - Франция");
           } else if (countries[k] == UK) {
-            console.log(k + 1 + " место - UK");
+            console.log(k + 1 + " место - Англия");
           } else if (countries[k] == BY) {
-            console.log(k + 1 + " место - BY");
+            console.log(k + 1 + " место - Белоруссия");
           }
         }
       }
@@ -141,22 +179,22 @@
 
         for (let k = 0; k < countries.length; k++) {
           if (countries[k] == DE) {
-            console.log(k + 1 + " место - DE");
+            console.log(k + 1 + " место - Германия");
           } else if (countries[k] == FR) {
-            console.log(k + 1 + " место - FR");
+            console.log(k + 1 + " место - Франция");
           } else if (countries[k] == UK) {
-            console.log(k + 1 + " место - UK");
+            console.log(k + 1 + " место - Англия");
           } else if (countries[k] == BY) {
-            console.log(k + 1 + " место - BY");
+            console.log(k + 1 + " место - Белоруссия");
           }
         }
       }
 
-      function time(coefficient) {
+      function time(coeff) {
         let time = 0;
 
         for (let i = 0; i < stepOneRound; i++) {
-          time += Math.random() * 5 * (500000 / maxRait);
+          time += Math.random() * 5 * (coeff / maxRait);
           time = Math.round(time * 100) / 100;
         }
 
@@ -175,8 +213,6 @@
         for (let i = 0; i < timing.length; i++) {
           sum += timing[i];
         }
-
-        console.log("Сумма времени " + sum);
 
         return sum;
       }
@@ -212,8 +248,8 @@
 
       let bicyclistDE4 = new sportsmanCreator(
         4,
-        "Glockner4",
-        "Michael4",
+        "Jey",
+        "Lofc",
         171370,
         0,
         "DE"
@@ -383,13 +419,13 @@
 
       for (let i = 0; i < countries.length; i++) {
         if (countries[i] == DE) {
-          console.log(i + 1 + " место - DE");
+          console.log(i + 1 + " место - Германия");
         } else if (countries[i] == FR) {
-          console.log(i + 1 + " место - FR");
+          console.log(i + 1 + " место - Франция");
         } else if (countries[i] == UK) {
-          console.log(i + 1 + " место - UK");
+          console.log(i + 1 + " место - Англия");
         } else if (countries[i] == BY) {
-          console.log(i + 1 + " место - BY");
+          console.log(i + 1 + " место - Белоруссия");
         }
       }
 
@@ -397,6 +433,7 @@
 
       alert("Жамкни <OK>, чтобы начать второй этап");
 
+      console.log("");
       console.log("Круг №2");
 
       for (let i = 0; i < 2; i++) {
@@ -420,13 +457,13 @@
       // Вывод результата 2 круга
       for (let i = 0; i < countries.length; i++) {
         if (countries[i] == DE) {
-          console.log(i + 1 + " место - DE");
+          console.log(i + 1 + " место - Германия  ");
         } else if (countries[i] == FR) {
-          console.log(i + 1 + " место - FR");
+          console.log(i + 1 + " место - Франция");
         } else if (countries[i] == UK) {
-          console.log(i + 1 + " место - UK");
+          console.log(i + 1 + " место - Англия");
         } else if (countries[i] == BY) {
-          console.log(i + 1 + " место - BY");
+          console.log(i + 1 + " место - Белоруссия");
         }
       }
     </script>
