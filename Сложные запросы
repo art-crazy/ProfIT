@@ -1,0 +1,115 @@
+-- Сложные запросы
+
+--- 1 Написать запрос поиска всех книг заданного автора (вывести наименование книг, жанра, возрастное ограничение и ФИО автора)
+
+SELECT
+    tittle,
+    genre,
+    age_restriction,
+    author
+FROM
+    book
+WHERE
+    author = 'Verner Vajner';
+
+--- 2 Написать запрос поиска всех книг изданных определенным издательством (позже/ранее заданной даты - вывести наименование книг, жанра, возрастное ограничение, ФИО автора и издательство)
+
+SELECT
+    tittle,
+    genre,
+    age_restriction,
+    author,
+    publishing_houses
+FROM
+    book
+WHERE
+        publishing_houses = 'whovoo'
+    AND date_of_issue > '22.06.1908';
+
+--- 3 Найти книги по заданным критериям (по жанру, по тегам, по автору, по ограничению)
+
+SELECT
+    *
+FROM
+    book
+WHERE
+        genre = (SELECT NAME FROM GENRE WHERE ID = 5)
+    AND author = 'Verner Vajner'
+    AND age_restriction = (SELECT LIMIT FROM age_restriction WHERE ID = 2);
+
+--- 4 Найти ТОП 5 самых популярных книг (по кол-ву выдачи)
+
+SELECT
+    *
+FROM
+    book
+ORDER BY
+    number_of_issued DESC
+OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY;
+
+--- 5 Найти ТОП 5 самых читающих пользователей (за заданный период)
+
+SELECT
+    *
+FROM
+    readers
+ORDER BY
+    number_of_books_taken DESC
+OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY;
+
+--- 6 Найти список книг которые не могут быть выданы читателю домой
+
+SELECT
+    *
+FROM
+    book
+WHERE
+    quantity = 1;
+
+--- 7 Запрос который покажет может ли читатель почитать/получить желаемую книгу НЕ ИСПРАВИЛ
+
+SELECT
+    readers.fullname
+	FROM
+    readers,
+    book
+WHERE
+        readers.black_list = 0
+    AND book.availability = 1
+    AND book.tittle = 'Losing The Shadows: final'
+    AND book.quantity >= 1
+    AND readers.age >= book.age_restriction;
+
+-- 8 Вывести список просроченных книг и их держателей со сроком просрочки
+
+SELECT
+    book_id,
+    reader_id
+FROM
+    used_book
+WHERE
+    return_date_plan < sysdate;
+
+--- 9 Вывести список неблагонадежных читателей
+
+SELECT
+    reader_id
+FROM
+    used_book
+WHERE
+    return_date_plan < sysdate;
+
+--- 10 Найти книгу похожую на ранее прочитанную
+SELECT
+    tittle
+FROM
+    book
+WHERE
+    genre = (
+        SELECT
+            genre
+        FROM
+            book
+        WHERE
+            tittle = 'Leading The Town'
+    );

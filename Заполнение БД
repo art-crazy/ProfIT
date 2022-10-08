@@ -1,0 +1,945 @@
+--- Заполнить таблицы AGE_RESTRICTION значениями
+
+INSERT INTO age_restriction VALUES ( 1, 0 );
+
+INSERT INTO age_restriction VALUES ( 2, 6 );
+
+INSERT INTO age_restriction VALUES ( 3, 12 );
+
+INSERT INTO age_restriction VALUES ( 4, 16 );
+
+INSERT INTO age_restriction VALUES ( 5, 18 );
+
+--- Заполнить таблицы GENRE значениями
+
+INSERT INTO genre VALUES ( 1, 'History books' );
+
+INSERT INTO genre VALUES ( 2, 'Autobiography' );
+
+INSERT INTO genre VALUES ( 3, 'Travel books' );
+
+INSERT INTO genre VALUES ( 4, 'Fairy tale' );
+
+INSERT INTO genre VALUES ( 5, 'Fantasy' );
+
+INSERT INTO genre VALUES ( 6, 'Science-fiction' );
+
+INSERT INTO genre VALUES ( 7, 'Chick lit' );
+
+INSERT INTO genre VALUES ( 8, 'Drama' );
+
+INSERT INTO genre VALUES ( 9, 'Non-fiction' );
+
+INSERT INTO genre VALUES ( 10, 'Anthology' );
+
+INSERT INTO genre VALUES ( 11, 'Encyclopedia' );
+
+INSERT INTO genre VALUES ( 12, 'Dictionary' );
+
+INSERT INTO genre VALUES ( 13, 'Childrens books' );
+
+INSERT INTO genre VALUES ( 14, 'Cook-books' );
+
+INSERT INTO genre VALUES ( 15, 'Comics' );
+
+INSERT INTO genre VALUES ( 16, 'Poetry' );
+
+INSERT INTO genre VALUES ( 17, 'Self-development book' );
+
+INSERT INTO genre VALUES ( 18, 'Horror' );
+
+INSERT INTO genre VALUES ( 19, 'Satire' );
+
+INSERT INTO genre VALUES ( 20, 'Romance' );
+
+INSERT INTO genre VALUES ( 21, 'Mystery' );
+
+INSERT INTO genre VALUES ( 22, 'Thriller' );
+
+INSERT INTO genre VALUES ( 23, 'Chick lit' );
+
+--- Заполнить таблицы book значениями
+INSERT INTO book VALUES (
+    1,
+    (SELECT NAME FROM GENRE WHERE ID = 2),
+    100,
+    10,
+    'Russian',
+    'Ben Bejn',
+    1,
+    '22.06.1990',
+    '22.06.2013',
+    'Losing The Shadows: beginning',
+    500,
+    'whereo',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 5),
+    22,
+    11
+);
+
+INSERT INTO book VALUES (
+    2,
+    (SELECT NAME FROM GENRE WHERE ID = 7),
+    110,
+    11,
+    'Russian',
+    'Dennis Bali',
+    1,
+    '22.06.1900',
+    '22.06.2013',
+    'Losing The Shadows: continuation',
+    510,
+    'whosey',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 3),
+    15,
+    33
+);
+
+INSERT INTO book VALUES (
+    3,
+    (SELECT NAME FROM GENRE WHERE ID = 6),
+    120,
+    12,
+    'Russian',
+    'Velizar CHernogorskij',
+    1,
+    '22.06.1991',
+    '22.06.2013',
+    'Losing The Shadows: final',
+    530,
+    'whomping',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 3),
+    1,
+    32
+);
+
+INSERT INTO book VALUES (
+    4,
+    (SELECT NAME FROM GENRE WHERE ID = 5),
+    130,
+    13,
+    'Russian',
+    'Verner Vajner',
+    1,
+    '22.06.1992',
+    '22.06.2003',
+    'Weep For The World',
+    520,
+    'NEOBEE',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 2),
+    5,
+    11
+);
+
+INSERT INTO book VALUES (
+    5,
+    (SELECT NAME FROM GENRE WHERE ID = 5),
+    130,
+    13,
+    'Russian',
+    'Verner Vajner',
+    1,
+    '22.06.1992',
+    '22.06.2003',
+    'Weep For The World',
+    520,
+    'Mooma',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 2),
+    7,
+    41
+);
+
+INSERT INTO book VALUES (
+    6,
+    (SELECT NAME FROM GENRE WHERE ID = 5),
+    130,
+    13,
+    'Russian',
+    'Verner Vajner',
+    1,
+    '22.06.1992',
+    '22.06.2003',
+    'Weep For The World',
+    520,
+    'Neutronium',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 2),
+    18,
+    5
+);
+
+INSERT INTO book VALUES (
+    7,
+    (SELECT NAME FROM GENRE WHERE ID = 5),
+    130,
+    13,
+    'Russian',
+    'Verner Vajner',
+    1,
+    '22.06.1902',
+    '22.06.2003',
+    'Weep For The World',
+    520,
+    'Kona',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 2),
+    22,
+    0
+);
+
+INSERT INTO book VALUES (
+    8,
+    (SELECT NAME FROM GENRE WHERE ID = 5),
+    130,
+    13,
+    'Russian',
+    'Verner Vajner',
+    1,
+    '22.06.1902',
+    '22.06.2003',
+    'Weep For The World',
+    520,
+    'NEFEL',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 2),
+    1,
+    7
+);
+
+INSERT INTO book VALUES (
+    9,
+    (SELECT NAME FROM GENRE WHERE ID = 22),
+    180,
+    18,
+    'Russian',
+    'Miroslav Versal',
+    1,
+    '22.06.1908',
+    '22.06.2013',
+    'Walking Technology',
+    510,
+    'Hululu',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 3),
+    6,
+    17
+);
+
+INSERT INTO book VALUES (
+    10,
+    (SELECT NAME FROM GENRE WHERE ID = 21),
+    190,
+    19,
+    'Russian',
+    'Roberto Rodos',
+    1,
+    '22.06.1907',
+    '22.06.2013',
+    'Travel To The Sea',
+    540,
+    'Unspeakable',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 4),
+    7,
+    19
+);
+
+INSERT INTO book VALUES (
+    11,
+    (SELECT NAME FROM GENRE WHERE ID = 20),
+    200,
+    20,
+    'Russian',
+    'Alard Miro',
+    1,
+    '22.06.1906',
+    '22.06.2013',
+    'Shelter At The Slaves',
+    550,
+    'Kukuro',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 5),
+    6,
+    22
+);
+
+INSERT INTO book VALUES (
+    12,
+    (SELECT NAME FROM GENRE WHERE ID = 19),
+    210,
+    21,
+    'Russian',
+    'Lel Lyubimov',
+    1,
+    '22.06.1910',
+    '22.06.2013',
+    'Running In The Town',
+    560,
+    'Kneid',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 1),
+    19,
+    23
+);
+
+INSERT INTO book VALUES (
+    13,
+    (SELECT NAME FROM GENRE WHERE ID = 18),
+    220,
+    22,
+    'Russian',
+    'Mark Vagner',
+    1,
+    '22.06.1911',
+    '22.06.2013',
+    'Leading The Town',
+    570,
+    'Uxor',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 2),
+    3,
+    35
+);
+
+INSERT INTO book VALUES (
+    14,
+    (SELECT NAME FROM GENRE WHERE ID = 17),
+    230,
+    23,
+    'Russian',
+    'Arkadij Krestovskij',
+    1,
+    '22.06.1912',
+    '22.06.2013',
+    'Searching In The Forest',
+    580,
+    'Kismet',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 3),
+    2,
+    54
+);
+
+INSERT INTO book VALUES (
+    15,
+    (SELECT NAME FROM GENRE WHERE ID = 16),
+    240,
+    24,
+    'Russian',
+    'Rodion Rudenskij',
+    1,
+    '22.06.1913',
+    '22.06.2013',
+    'Hurt By Myself',
+    590,
+    'Rovu',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 5),
+    4,
+    7
+);
+
+INSERT INTO book VALUES (
+    16,
+    (SELECT NAME FROM GENRE WHERE ID = 15),
+    250,
+    25,
+    'Russian',
+    'Ron Allen',
+    1,
+    '22.06.1914',
+    '22.06.2013',
+    'Healing Dreams',
+    500,
+    'MEACURE',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 1),
+    5,
+    23
+);
+
+INSERT INTO book VALUES (
+    17,
+    (SELECT NAME FROM GENRE WHERE ID = 14),
+    260,
+    26,
+    'Russian',
+    'Arkadij Krestovskij',
+    1,
+    '22.06.1915',
+    '22.06.2013',
+    'Dead At The Demons',
+    400,
+    'Yellin',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 2),
+    6,
+    24
+);
+
+INSERT INTO book VALUES (
+    18,
+    (SELECT NAME FROM GENRE WHERE ID = 13),
+    270,
+    27,
+    'Denmark',
+    'Roman Berkut',
+    1,
+    '22.06.1916',
+    '22.06.2013',
+    'Life At My Future',
+    300,
+    'Zara',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 3),
+    7,
+    32
+);
+
+INSERT INTO book VALUES (
+    19,
+    (SELECT NAME FROM GENRE WHERE ID = 18),
+    280,
+    28,
+    'Denmark',
+    'Azar Azorin',
+    1,
+    '22.06.1917',
+    '22.06.2013',
+    'Write About The Mist',
+    200,
+    'EXOTICA',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 5),
+    8,
+    5
+);
+
+INSERT INTO book VALUES (
+    20,
+    (SELECT NAME FROM GENRE WHERE ID = 11),
+    290,
+    29,
+    'Serbia',
+    'Damir Vostochnyj',
+    1,
+    '22.06.1918',
+    '22.06.2013',
+    'Officer Of Perfection',
+    100,
+    'whovoo',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 1),
+    9,
+    16
+);
+
+INSERT INTO book VALUES (
+    21,
+    (SELECT NAME FROM GENRE WHERE ID = 10),
+    300,
+    30,
+    'Serbia',
+    'Nikas Nimmo, Maksim Malevskij',
+    1,
+    '22.06.1919',
+    '22.06.2013',
+    'Write About The Sea',
+    700,
+    'whovoo',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 2),
+    8,
+    24
+);
+
+INSERT INTO book VALUES (
+    22,
+    (SELECT NAME FROM GENRE WHERE ID = 9),
+    310,
+    31,
+    'Finland',
+    'Berislav Boginskij, Eremej Slavich',
+    1,
+    '22.06.1920',
+    '22.06.2013',
+    'Justice In The East',
+    500,
+    'whovoo',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 3),
+    7,
+    32
+);
+
+INSERT INTO book VALUES (
+    23,
+    (SELECT NAME FROM GENRE WHERE ID = 8),
+    320,
+    32,
+    'Finland',
+    'Demis Viardo, Vseslav YAsnogorskij',
+    1,
+    '22.06.1921',
+    '22.06.2013',
+    'Lurking In The Shadows',
+    550,
+    'whovoo',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 5),
+    6,
+    22
+);
+
+INSERT INTO book VALUES (
+    24,
+    (SELECT NAME FROM GENRE WHERE ID = 7),
+    100,
+    10,
+    'France',
+    'Daniel Dare, Amadej Styuart',
+    1,
+    '22.06.1922',
+    '22.06.2013',
+    'Inventing The Apocolypse',
+    440,
+    'whovoo',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 1),
+    5,
+    11
+);
+
+INSERT INTO book VALUES (
+    25,
+    (SELECT NAME FROM GENRE WHERE ID = 6),
+    100,
+    10,
+    'France',
+    'Pankrat Pshenichnyj, Belovod Budro',
+    1,
+    '22.06.1923',
+    '22.06.2013',
+    'Blinded By The Fog',
+    330,
+    'CAELUM',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 2),
+    4,
+    14
+);
+
+INSERT INTO book VALUES (
+    26,
+    (SELECT NAME FROM GENRE WHERE ID = 18),
+    100,
+    10,
+    'Germany',
+    'Barri Brajtman, Gelion Marell',
+    1,
+    '22.06.1924',
+    '22.06.2013',
+    'Bleeding At My Past',
+    220,
+    'Gavu',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 3),
+    3,
+    15
+);
+
+INSERT INTO book VALUES (
+    27,
+    (SELECT NAME FROM GENRE WHERE ID = 4),
+    100,
+    10,
+    'Germany',
+    'Velimir Dal, Ognedar Vesnik',
+    1,
+    '22.06.1926',
+    '22.06.2013',
+    'Belonging To The Past',
+    110,
+    'Zoron',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 5),
+    2,
+    17
+);
+
+INSERT INTO book VALUES (
+    28,
+    (SELECT NAME FROM GENRE WHERE ID = 3),
+    100,
+    10,
+    'Greece',
+    'Alard Miro, Adriano Baretti',
+    1,
+    '22.06.1925',
+    '22.06.2013',
+    'Mending My Destiny',
+    520,
+    'ADUB',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 1),
+    1,
+    18
+);
+
+INSERT INTO book VALUES (
+    29,
+    (SELECT NAME FROM GENRE WHERE ID = 2),
+    100,
+    10,
+    'Greece',
+    'Gregor Grandi, Borimir Boguslavskij',
+    1,
+    '22.06.1926',
+    '22.06.2013',
+    'Searching In The Mines',
+    544,
+    'NEOVIA',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 4),
+    15,
+    4
+);
+
+INSERT INTO book VALUES (
+    30,
+    (SELECT NAME FROM GENRE WHERE ID = 1),
+    100,
+    10,
+    'France',
+    'Radzhan Oldridzh, Vensan age_restriction',
+    1,
+    '22.06.1927',
+    '22.06.2013',
+    'Healing My Family',
+    555,
+    'Zenith',
+    (SELECT LIMIT FROM age_restriction WHERE ID = 3),
+    2,
+    16
+);
+
+--- Заполнить таблицы readers значениями- Заполнить таблицы readers значениями
+
+INSERT INTO readers VALUES (
+    1,
+    'Kevin Craig',
+    '88009001111',
+    'KevinCraig@gmail.com',
+    '02.02.1995',
+    'male',
+    '074 Hunter Fall South Charles LS16 E8E',
+    1,
+    26,
+    0,
+    4,
+	1
+);
+
+INSERT INTO readers VALUES (
+    2,
+    'Jerry Gonzales',
+    '88009001112',
+    'JerryGonzales@gmail.com',
+    '03.02.1995',
+    'male',
+    '8 Evelyn Roads Ellachester BS5 8PJ',
+    0,
+    26,
+    1,
+    15,
+    0
+);
+
+INSERT INTO readers VALUES (
+    3,
+    'Thomas Moore',
+    '88009001113',
+    'ThomasMoore@gmail.com',
+    '04.04.1995',
+    'male',
+    'Studio 34 Rowena Viaduct Port Soniaview M44 6ZR',
+    1,
+    26,
+    0,
+    6,
+	1
+);
+
+INSERT INTO readers VALUES (
+    4,
+    'Michael Simmons',
+    '88009001114',
+    'MichaelSimmons@gmail.com',
+    '05.02.1995',
+    'male',
+    'Studio 61 Rob Squares Karlville B92 8HS',
+    0,
+    26,
+    0,
+    22,
+	1
+);
+
+INSERT INTO readers VALUES (
+    5,
+    'Vincent Miller',
+    '88009001115',
+    'VincentMiller@gmail.com',
+    '06.02.1995',
+    'male',
+    '11 Evans Fall Port Davidview IP21 4TN',
+    1,
+    26,
+    0,
+    66,
+	1
+);
+
+INSERT INTO readers VALUES (
+    6,
+    'Lawrence Taylor',
+    '88009001116',
+    'LawrenceTaylor@gmail.com',
+    '07.02.1995',
+    'male',
+    'Flat 05 Cooper Plaza West Alfie WV99 1TL',
+    0,
+    26,
+    0,
+    123,
+    0
+);
+
+INSERT INTO readers VALUES (
+    7,
+    'Justin Carter',
+    '88009001117',
+    'JustinCarter@gmail.com',
+    '08.02.1995',
+    'male',
+    '334 Gary Curve West Charlotteton DE55 5SF',
+    1,
+    26,
+    0,
+    15,
+    0
+);
+
+INSERT INTO readers VALUES (
+    8,
+    'Jeffery Hayes',
+    '88009001118',
+    'JefferyHayes@gmail.com',
+    '09.02.1995',
+    'male',
+    '11 Suzanne Summit Butlerview AL9 5DL',
+    0,
+    26,
+    1,
+    17,
+    0
+);
+
+INSERT INTO readers VALUES (
+    9,
+    'Joe Perez',
+    '88009001119',
+    'JoePerez@gmail.com',
+    '11.02.1995',
+    'male',
+    'Flat 79a Andy Path Oliviastad PL7 4AJ',
+    1,
+    26,
+    0,
+    18,
+	1
+);
+
+INSERT INTO readers VALUES (
+    10,
+    'Jason Stanley',
+    '88009001121',
+    'JasonStanley@gmail.com',
+    '21.02.1995',
+    'male',
+    'Flat 00 Young Springs East Williamstad DY2 9EU',
+    0,
+    26,
+    0,
+    44,
+	1
+);
+
+INSERT INTO readers VALUES (
+    11,
+    'James Stevens',
+    '88009001131',
+    'JamesStevens@gmail.com',
+    '12.02.1995',
+    'male',
+    '616 Karlie Pike Bennettville PL20 6JB',
+    1,
+    26,
+    0,
+    28,
+	1
+);
+
+INSERT INTO readers VALUES (
+    12,
+    'Chris Rhodes',
+    '88009001141',
+    'ChrisRhodes@gmail.com',
+    '13.02.1995',
+    'female',
+    'Studio 61x Harvey Knolls West Amy BS4 2BH',
+    0,
+    26,
+    0,
+    33,
+	1
+);
+
+INSERT INTO readers VALUES (
+    13,
+    'John Thomas',
+    '88009001151',
+    'JohnThomas@gmail.com',
+    '14.02.1995',
+    'male',
+    'Flat 80a Patel Mills West Jacob S2 3BQ',
+    1,
+    26,
+    0,
+    39,
+	1
+);
+
+INSERT INTO readers VALUES (
+    14,
+    'David Cook',
+    '88009001161',
+    'DavidCook@gmail.com',
+    '15.02.1995',
+    'male',
+    'Flat 17q Reid Meadow Isaacchester NR8 5BD',
+    0,
+    26,
+    1,
+    93,
+	1
+);
+
+INSERT INTO readers VALUES (
+    15,
+    'Jerome White',
+    '88009001171',
+    'JeromeWhite@gmail.com',
+    '16.02.1995',
+    'male',
+    'Flat 90 Cook Lock Adelemouth M15 6QL',
+    1,
+    26,
+    0,
+    0,
+	0
+);
+
+INSERT INTO readers VALUES (
+    16,
+    'Terry Anderson',
+    '88009001181',
+    'TerryAnderson@gmail.com',
+    '17.02.1995',
+    'male',
+    'Flat 67h Lewis Valleys North Jordanmouth HR8 2JJ',
+    0,
+    26,
+    0,
+    44,
+	1
+);
+
+INSERT INTO readers VALUES (
+    17,
+    'Don Gutierrez',
+    '88009001191',
+    'DonGutierrez@gmail.com',
+    '18.02.1995',
+    'male',
+    '10 Lucas Forks South Helen NR10 3QE',
+    1,
+    26,
+    0,
+    48,
+	1
+);
+
+INSERT INTO readers VALUES (
+    18,
+    'Lee Davis',
+    '88009001211',
+    'LeeDavis@gmail.com',
+    '19.02.1995',
+    'male',
+    'Flat 82 Patel Creek Port Samanthaview EX16 6BS',
+    0,
+    26,
+    0,
+    84,
+	1
+);
+
+INSERT INTO readers VALUES (
+    19,
+    'Fred West',
+    '88009001311',
+    'FredWest@gmail.com',
+    '20.02.1995',
+    'male',
+    'Flat 37 Colin Village Port Steve PO8 0LJ',
+    1,
+    26,
+    0,
+    93,
+	1
+);
+
+INSERT INTO readers VALUES (
+    20,
+    'Paul Johnson',
+    '88009001411',
+    'PaulJohnson@gmail.com',
+    '21.02.1995',
+    'male',
+    'Studio 19v Stewart Lane South Frankbury BN41 1PT',
+    0,
+    26,
+    1,
+    9,
+	1
+);	
+
+--- Заполнить таблицы used_book значениями
+
+INSERT INTO used_book VALUES (
+    (SELECT ID FROM BOOK WHERE ID = 1),
+    (SELECT ID FROM READERS WHERE ID = 15),
+    '01.01.2022',
+    '01.02.2022',
+    (CAST(sysdate AS date) - CAST('01.02.2022' AS date))
+);
+
+INSERT INTO used_book VALUES (
+    (SELECT ID FROM BOOK WHERE ID = 5),
+    (SELECT ID FROM READERS WHERE ID = 1),
+    '15.02.2022',
+    '01.03.2022',
+    (CAST(sysdate AS date) - CAST('01.03.2022' AS date))
+);
+
+INSERT INTO used_book VALUES (
+    (SELECT ID FROM BOOK WHERE ID = 6),
+    (SELECT ID FROM READERS WHERE ID = 17),
+    '01.03.2022',
+    '03.04.2022',
+    (CAST(sysdate AS date) - CAST('01.04.2022' AS date))
+);
+
+INSERT INTO used_book VALUES (
+    (SELECT ID FROM BOOK WHERE ID = 7),
+    (SELECT ID FROM READERS WHERE ID = 19),
+    '01.05.2022',
+    '01.06.2022',
+    (CAST(sysdate AS date) - CAST('01.06.2022' AS date))
+);
+
+INSERT INTO used_book VALUES (
+    (SELECT ID FROM BOOK WHERE ID = 2),
+    (SELECT ID FROM READERS WHERE ID = 13),
+    '01.09.2022',
+    '01.10.2022',
+    (CAST(sysdate AS date) - CAST('01.10.2022' AS date))
+);
+

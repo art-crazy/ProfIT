@@ -1,0 +1,84 @@
+---СОЗДАНИЕ ТАБЛИЦ
+
+CREATE TABLE age_restriction (
+    id    INT PRIMARY KEY NOT NULL,
+    limit INT
+);
+
+CREATE TABLE genre (
+    id   INT PRIMARY KEY NOT NULL,
+    name VARCHAR(50)
+);
+
+CREATE TABLE book (
+	id                     INT PRIMARY KEY NOT NULL,
+    genre                  VARCHAR(50),
+    purchaseprice          INT,
+    price_an_overdue_day   INT,
+    country_of_publication VARCHAR(50),
+    author                 VARCHAR(50),
+    availability           INT,
+    date_of_issue          VARCHAR(50),
+    return_date_plan       VARCHAR(50),
+    tittle                 VARCHAR(255),
+    quantity_of_pages      INT,
+    publishing_houses      VARCHAR2(100),
+    age_restriction        NUMBER,
+    quantity               NUMBER,
+    number_of_issued       NUMBER
+);
+
+CREATE TABLE readers (
+    id                    INT PRIMARY KEY NOT NULL,
+    fullname              VARCHAR(250),
+    phonenumber           VARCHAR(250),
+    email                 VARCHAR(250),
+    birthday              VARCHAR(50),
+    gender                VARCHAR(50),
+    address               VARCHAR(255),
+    worker                NUMBER,
+    age                   NUMBER,
+    black_list            NUMBER,
+    number_of_books_taken NUMBER,
+    taken_book            NUMBER
+);
+
+CREATE TABLE used_book (
+    book_id          INT,
+    reader_id        INT,
+    date_of_receipt  DATE,
+    return_date_plan DATE,
+    overdue_days INT
+);
+
+
+
+
+--- SELECT LIMIT FROM age_restriction WHERE ID = 1
+-------------------------------------------НЕ ИСПОЛЬЗУЮ
+
+--CREATE TABLE warehouse (
+--    number_of_books_in_stock VARCHAR(50)
+--);
+--
+--CREATE TABLE journal (
+--    date_of_issue VARCHAR(50),
+--    return_date   VARCHAR(50)
+--);
+--
+--CREATE TABLE publishing_houses (
+--    id      VARCHAR(50),
+--    name    VARCHAR(50),
+--    country VARCHAR(50)
+--);
+--
+--CREATE TABLE author (
+--    name_literature VARCHAR(50),
+--    topic           VARCHAR(50)
+--);
+--
+--
+--CREATE TABLE reader_rating (
+--    number_of_books                   INT,
+--    number_of_books_delivered_on_time INT
+--);
