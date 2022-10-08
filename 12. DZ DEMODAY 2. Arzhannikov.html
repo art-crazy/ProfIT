@@ -8,6 +8,7 @@
       let stepOneRound = Number(
         prompt("Введи кличество этапов первого круга (не более 10)")
       );
+      let countries = [];
 
       if (
         stepOneRound !== 1 &&
@@ -41,6 +42,7 @@
         );
       }
 
+      // Класс генерирует участников велогонки из полученных объектов
       class sportsmanCreator {
         constructor(
           number,
@@ -112,6 +114,20 @@
         return maxTime;
       }
 
+      function outPutResult() {
+        for (let i = 0; i < countries.length; i++) {
+          if (countries[i] == DE) {
+            console.log(i + 1 + " место - Германия");
+          } else if (countries[i] == FR) {
+            console.log(i + 1 + " место - Франция");
+          } else if (countries[i] == UK) {
+            console.log(i + 1 + " место - Англия");
+          } else if (countries[i] == BY) {
+            console.log(i + 1 + " место - Белоруссия");
+          }
+        }
+      }
+
       function countryPlaceTwoPart(k) {
         DE = countryCalcTimeTwoPart(
           arrBicyclistDE,
@@ -147,17 +163,7 @@
         });
 
         // Вывод результата этапа
-        for (let k = 0; k < countries.length; k++) {
-          if (countries[k] == DE) {
-            console.log(k + 1 + " место - Германия");
-          } else if (countries[k] == FR) {
-            console.log(k + 1 + " место - Франция");
-          } else if (countries[k] == UK) {
-            console.log(k + 1 + " место - Англия");
-          } else if (countries[k] == BY) {
-            console.log(k + 1 + " место - Белоруссия");
-          }
-        }
+        outPutResult();
       }
 
       function countryPlace(k) {
@@ -166,7 +172,7 @@
         UK = countryCalcTime(arrBicyclistUK, arrBicyclistUK[0].country, k);
         BY = countryCalcTime(arrBicyclistBY, arrBicyclistBY[0].country, k);
 
-        let countries = [DE, FR, UK, BY];
+        countries = [DE, FR, UK, BY];
 
         console.log("");
         console.log("Результат этапа №" + (k + 1) + " первого круга:");
@@ -177,17 +183,7 @@
 
         // Вывод результата 1 круга
 
-        for (let k = 0; k < countries.length; k++) {
-          if (countries[k] == DE) {
-            console.log(k + 1 + " место - Германия");
-          } else if (countries[k] == FR) {
-            console.log(k + 1 + " место - Франция");
-          } else if (countries[k] == UK) {
-            console.log(k + 1 + " место - Англия");
-          } else if (countries[k] == BY) {
-            console.log(k + 1 + " место - Белоруссия");
-          }
-        }
+        outPutResult();
       }
 
       function time(coeff) {
@@ -408,7 +404,7 @@
       UK = TimingAndSum(arrBicyclistUK);
       BY = TimingAndSum(arrBicyclistBY);
 
-      let countries = [DE, FR, UK, BY];
+      countries = [DE, FR, UK, BY];
 
       countries.sort(function (a, b) {
         return b - a;
@@ -417,17 +413,7 @@
       console.log("");
       console.log("Итоги первого круга:");
 
-      for (let i = 0; i < countries.length; i++) {
-        if (countries[i] == DE) {
-          console.log(i + 1 + " место - Германия");
-        } else if (countries[i] == FR) {
-          console.log(i + 1 + " место - Франция");
-        } else if (countries[i] == UK) {
-          console.log(i + 1 + " место - Англия");
-        } else if (countries[i] == BY) {
-          console.log(i + 1 + " место - Белоруссия");
-        }
-      }
+      outPutResult();
 
       // ВТОРОЙ КРУГ
 
@@ -455,17 +441,8 @@
       console.log("Итоги второго круга:");
 
       // Вывод результата 2 круга
-      for (let i = 0; i < countries.length; i++) {
-        if (countries[i] == DE) {
-          console.log(i + 1 + " место - Германия  ");
-        } else if (countries[i] == FR) {
-          console.log(i + 1 + " место - Франция");
-        } else if (countries[i] == UK) {
-          console.log(i + 1 + " место - Англия");
-        } else if (countries[i] == BY) {
-          console.log(i + 1 + " место - Белоруссия");
-        }
-      }
+
+      outPutResult();
     </script>
   </head>
   <body>
